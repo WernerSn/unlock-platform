@@ -2,7 +2,6 @@
 <html>
 <head>
     <title>Unlock Platform Demo</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
@@ -60,7 +59,7 @@
                     </button>
                 </div>
                 <p class="register-link">
-                    New to Unlock? <a href="#" id="registerLink">Register here</a>
+                    New to Unlock? <a href="#">Register here</a>
                 </p>
             </div>
         </div>
@@ -199,10 +198,11 @@
                         <span class="validation-check">✓</span>
                     </div>
                 </div>
-                <div class="privacy-policy">
-                    <input type="checkbox" id="privacy" required>
-                    <label for="privacy">
-                        I accept the <a href="#">Privacy Policy</a> and <a href="#">Terms of Service</a>
+                <div class="form-group terms">
+                    <label class="checkbox-container">
+                        <input type="checkbox" checked>
+                        <span class="checkmark"></span>
+                        <span>I accept the Privacy Policy</span>
                     </label>
                 </div>
                 <button type="submit" class="submit-btn">Create an new Account</button>
@@ -606,7 +606,7 @@
                     <button class="option-card">
                         <div class="option-icon">
                             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 10.09 3 6.5S5.91 1 9.5 1c1.61 0 3.09.59 4.23 1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="currentColor"/>
+                                <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="currentColor"/>
                             </svg>
                         </div>
                         <h3>Search</h3>

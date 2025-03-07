@@ -20,76 +20,48 @@ document.querySelectorAll('.nav-item').forEach(item => {
 });
 
 // Handle auth button clicks
-document.addEventListener('DOMContentLoaded', () => {
-    // Get all containers
-    const launchContainer = document.querySelector('.launch-container');
-    const loginContainer = document.querySelector('.login-container');
-    const signupContainer = document.querySelector('.signup-container');
-    const onboardingContainer = document.querySelector('.onboarding-container');
-    const googleAuth = document.querySelector('.google-auth');
-    const facebookAuth = document.querySelector('.facebook-auth');
-    const twitterAuth = document.querySelector('.twitter-auth');
+document.getElementById('signIn').addEventListener('click', () => {
+    document.querySelector('.launch-container').classList.add('hidden');
+    document.querySelector('.login-container').classList.remove('hidden');
+});
 
-    // Get buttons and links
-    const signInBtn = document.getElementById('signIn');
-    const signUpBtn = document.getElementById('signUp');
-    const registerLink = document.getElementById('registerLink');
-    const signupForm = document.getElementById('signupForm');
+document.getElementById('signUp').addEventListener('click', () => {
+    document.querySelector('.launch-container').classList.add('hidden');
+    document.querySelector('.signup-container').classList.remove('hidden');
+});
 
-    // Helper to hide all containers
-    const hideAllContainers = () => {
-        launchContainer.classList.add('hidden');
-        loginContainer.classList.add('hidden');
-        signupContainer.classList.add('hidden');
-        onboardingContainer?.classList.add('hidden');
-        googleAuth.classList.add('hidden');
-        facebookAuth.classList.add('hidden');
-        twitterAuth.classList.add('hidden');
-    };
-
-    // Show signup form
-    const showSignupForm = () => {
-        hideAllContainers();
-        signupContainer.classList.remove('hidden');
-    };
-
-    // Start onboarding flow
-    const startOnboarding = () => {
-        hideAllContainers();
-        currentStep = 1;
-        showOnboardingStep(currentStep);
-        onboardingContainer?.classList.remove('hidden');
-    };
-
-    // Sign In button click
-    signInBtn?.addEventListener('click', () => {
-        hideAllContainers();
-        loginContainer.classList.remove('hidden');
-    });
-
-    // Sign Up button click
-    signUpBtn?.addEventListener('click', () => {
-        showSignupForm();
-    });
-
-    // Register link click
-    registerLink?.addEventListener('click', (e) => {
-        e.preventDefault();
-        showSignupForm();
-    });
-
-    // Handle signup form submission
-    signupForm?.addEventListener('submit', (e) => {
-        e.preventDefault();
-        startOnboarding();
-    });
-
-    // Handle login form submission
-    const loginForm = document.getElementById('loginForm');
-    loginForm?.addEventListener('submit', (e) => {
-        e.preventDefault();
+// Handle form submission
+document.getElementById('loginForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    
+    // For demo purposes, we'll just log the values and redirect
+    console.log('Login attempted with:', email);
+    
+    // Simulate loading
+    const submitBtn = document.querySelector('.submit-btn');
+    submitBtn.textContent = 'Logging in...';
+    submitBtn.disabled = true;
+    
+    // Simulate API call delay
+    setTimeout(() => {
+        // Navigate to dashboard (you'll need to create this page)
         window.location.href = 'dashboard.html';
-    });
+    }, 1500);
+});
+
+document.getElementById('signupForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const submitBtn = e.target.querySelector('.submit-btn');
+    submitBtn.textContent = 'Creating Account...';
+    submitBtn.disabled = true;
+    
+    // Simulate account creation
+    setTimeout(() => {
+        document.querySelector('.signup-container').classList.add('hidden');
+        document.querySelector('.onboarding-container').classList.remove('hidden');
+    }, 1500);
 });
 
 // Toggle password visibility
