@@ -594,6 +594,10 @@ body {
 
 /* Responsive Design */
 @media screen and (max-width: 1024px) {
+    .main-content {
+        padding: 1.5rem;
+    }
+
     .dashboard-content {
         grid-template-columns: repeat(2, 1fr);
         grid-template-areas:
@@ -603,10 +607,13 @@ body {
             "bottom-left bottom-right"
             "bottom-middle bottom-middle";
         gap: 16px;
+        padding: 0 1rem;
+        max-width: 100%;
     }
 
     .reports-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
     }
 }
 
@@ -639,7 +646,7 @@ body {
             "bottom-middle"
             "bottom-right";
         gap: 16px;
-        padding: 16px;
+        padding: 0 0.5rem;
     }
 
     .reports-grid {
