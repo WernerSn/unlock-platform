@@ -107,16 +107,17 @@ body {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-areas:
-        "top-left top-middle top-right"
+        "reports requests notifications"
         "carousel carousel carousel"
         "bottom-left bottom-middle bottom-right";
     gap: 1rem;
 }
 
-/* Top Row Sections */
+/* Top Row Sections - make them all consistent */
 .reports-section,
 .due-diligence-section,
-.research-requests-section {
+.research-requests-section,
+.notifications-section {  /* Add notifications section */
     background: white;
     border-radius: 12px;
     padding: 16px;
@@ -126,6 +127,21 @@ body {
     display: flex;
     flex-direction: column;
     gap: 12px;
+    height: 100%;  /* Ensure all containers have same height */
+    box-sizing: border-box;  /* Include padding in height calculation */
+}
+
+/* Assign grid areas */
+.reports-section {
+    grid-area: reports;
+}
+
+.due-diligence-section {
+    grid-area: requests;
+}
+
+.notifications-section {
+    grid-area: notifications;
 }
 
 .header-actions {
@@ -994,11 +1010,9 @@ body {
 
 /* Notifications Section */
 .notifications-section {
-    background: white;
-    border-radius: 12px;
-    padding: 24px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    margin-top: 24px;
+    grid-area: notifications;
+    display: flex;
+    flex-direction: column;
 }
 
 .notifications-section .section-header {
@@ -1008,24 +1022,12 @@ body {
     margin-bottom: 20px;
 }
 
-.mark-all-read {
-    color: #0D8ABC;
-    background: none;
-    border: none;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: color 0.2s;
-}
-
-.mark-all-read:hover {
-    color: #0A6D8F;
-}
-
 .notifications-list {
+    flex: 1;
     display: flex;
     flex-direction: column;
     gap: 12px;
+    overflow-y: auto;
 }
 
 .notification-item {
@@ -1401,4 +1403,19 @@ body {
 .signout-btn:hover {
     background: #f1f5f9;
     color: #ef4444;
+}
+
+/* Add back the mark all as read button styles */
+.mark-all-read {
+    color: #0D8ABC;
+    background: none;
+    border: none;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.mark-all-read:hover {
+    color: #0A6D8F;
 }
