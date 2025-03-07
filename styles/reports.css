@@ -6,16 +6,16 @@
 
 .main-content {
     margin-left: 240px;
-    padding: 16px 16px 16px 8px; /* Reduce left padding */
+    padding: 16px 16px 16px 8px;
     min-height: calc(100vh - 73px);
     background: #F5F6F7;
-    overflow-x: hidden; /* Prevent horizontal scroll */
+    overflow-x: hidden;
 }
 
 .reports-container {
     width: 90%;
     padding: 4px;
-    max-width: calc(100vw - 240px); /* Slightly reduce the space reserved for menu */
+    max-width: calc(100vw - 240px);
 }
 
 .reports-header {
@@ -266,12 +266,13 @@ input[type="date"] {
     }
 
     .main-content {
-        padding: 0;
+        padding: 12px;
         height: calc(100vh - 60px);
     }
 
     .reports-container {
-        padding: 16px;
+        width: 100%;
+        padding: 0;
     }
 
     .reports-header {
@@ -1465,8 +1466,15 @@ input[type="date"] {
 
 /* Tablet breakpoint */
 @media screen and (max-width: 1024px) {
+    .main-content {
+        margin-left: 0;
+        padding: 16px;
+    }
+
     .reports-container {
-        padding: 1.5rem;
+        width: 100%;
+        max-width: none;
+        padding: 0;
     }
 
     /* Fix search area layout */
@@ -1508,8 +1516,13 @@ input[type="date"] {
 
 /* Mobile breakpoint */
 @media screen and (max-width: 768px) {
+    .main-content {
+        padding: 12px;
+    }
+
     .reports-container {
-        padding: 1rem;
+        width: 100%;
+        padding: 0;
     }
 
     /* Further adjust search area for mobile */
