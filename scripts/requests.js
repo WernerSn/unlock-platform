@@ -248,33 +248,6 @@ document.addEventListener('DOMContentLoaded', function() {
         e.stopPropagation();
     });
 
-    // Function to initialize action buttons based on request status
-    function initializeActionButtons() {
-        const rows = document.querySelectorAll('tbody tr');
-        
-        rows.forEach(row => {
-            const statusBadge = row.querySelector('.status-badge');
-            const downloadBtn = row.querySelector('button[title="Download"]');
-            const printBtn = row.querySelector('button[title="Print"]');
-            
-            if (statusBadge && downloadBtn && printBtn) {
-                const isCompleted = statusBadge.classList.contains('completed');
-                
-                // Enable/disable buttons based on status
-                downloadBtn.disabled = !isCompleted;
-                printBtn.disabled = !isCompleted;
-                
-                if (isCompleted) {
-                    downloadBtn.setAttribute('data-action', 'download');
-                    printBtn.setAttribute('data-action', 'print');
-                }
-            }
-        });
-    }
-
-    // Initialize action buttons
-    initializeActionButtons();
-
     // Add click handlers for download and print actions
     document.addEventListener('click', function(e) {
         const button = e.target.closest('button[data-action]');
@@ -282,330 +255,16 @@ document.addEventListener('DOMContentLoaded', function() {
         
         const action = button.getAttribute('data-action');
         const row = button.closest('tr');
-        const requestId = row.querySelector('td:first-child').textContent;
-        const requestType = row.querySelector('td:nth-child(3)').textContent.trim().toLowerCase();
+        const type = row.querySelector('td:nth-child(4)').textContent.toLowerCase();
         
         if (action === 'download') {
-            if (requestType === 'research') {
-                openDownloadDialog(row, 'research');
-            } else if (requestType === 'due diligence') {
-                openDownloadDialog(row, 'due-diligence');
-            } else {
-                alert('Download is only available for research and due diligence reports');
-            }
+            openDownloadDialog(row, type);
         } else if (action === 'print') {
-            if (requestType === 'due diligence') {
-                openPrintDialog(row, 'due-diligence');
-            } else if (requestType === 'research') {
-                openPrintDialog(row, 'research');
-            } else {
-                alert('Printing is only available for due diligence and research reports');
-            }
+            openPrintDialog(row, type);
         }
     });
 
     // Print Dialog functionality
-    const printDialog = document.getElementById('printPopup');
-    const cancelPrintBtn = printDialog.querySelector('.cancel-print');
-    const confirmPrintBtn = printDialog.querySelector('.confirm-print');
-    
-    function openPrintDialog(row, type) {
-        const requestId = row.querySelector('td:first-child').textContent;
-        const company = row.querySelector('td:nth-child(2)').textContent;
-        const date = row.querySelector('td:nth-child(5)').textContent;
-        
-        // Update print options based on type
-        const optionsSection = printDialog.querySelector('.print-option-group');
-        if (type === 'due-diligence') {
-            optionsSection.innerHTML = `
-                <label class="print-option">
-                    <input type="radio" name="print-type" value="snapshot" checked>
-                    <div class="print-option-content">
-                        <span class="print-option-title">Snapshot Report</span>
-                        <span class="print-option-description">A condensed overview of key findings and essential information</span>
-                    </div>
-                </label>
-                <label class="print-option">
-                    <input type="radio" name="print-type" value="deep-dive">
-                    <div class="print-option-content">
-                        <span class="print-option-title">Deep Dive Report</span>
-                        <span class="print-option-description">Comprehensive analysis with detailed findings and supporting documentation</span>
-                    </div>
-                </label>
-            `;
-        } else {
-            optionsSection.innerHTML = `
-                <label class="print-option">
-                    <input type="radio" name="print-type" value="executive" checked>
-                    <div class="print-option-content">
-                        <span class="print-option-title">Executive Summary</span>
-                        <span class="print-option-description">Key findings and recommendations for decision makers</span>
-                    </div>
-                </label>
-                <label class="print-option">
-                    <input type="radio" name="print-type" value="full">
-                    <div class="print-option-content">
-                        <span class="print-option-title">Full Report</span>
-                        <span class="print-option-description">Complete research analysis with methodology and data</span>
-                    </div>
-                </label>
-            `;
-        }
-        
-        // Show initial preview
-        updatePreview(row, type);
-        
-        // Add change listener for print options
-        const radioButtons = optionsSection.querySelectorAll('input[type="radio"]');
-        radioButtons.forEach(radio => {
-            radio.addEventListener('change', () => updatePreview(row, type, radio.value));
-        });
-        
-        // Show dialog
-        printDialog.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
-
-    function updatePreview(row, type, option = 'snapshot') {
-        const previewContainer = printDialog.querySelector('.preview-container');
-        const requestId = row.querySelector('td:first-child').textContent;
-        const company = row.querySelector('td:nth-child(2)').textContent;
-        const date = row.querySelector('td:nth-child(5)').textContent;
-        
-        let content = '';
-        
-        if (type === 'research') {
-            content = `
-                <div class="print-preview-content">
-                    <div class="preview-header-content">
-                        <h1>${requestId} - Research Report</h1>
-                        <p class="company-name">${company}</p>
-                        <p class="report-date">${date}</p>
-                    </div>
-                    <div class="preview-section">
-                        <h2>Executive Summary</h2>
-                        <div class="research-summary">
-                            <p>Comprehensive market analysis and competitive positioning assessment for ${company}.</p>
-                            <div class="key-metrics">
-                                <div class="metric">
-                                    <span class="metric-label">Market Share</span>
-                                    <span class="metric-value">23.5%</span>
-                                </div>
-                                <div class="metric">
-                                    <span class="metric-label">Growth Rate</span>
-                                    <span class="metric-value">+15.3%</span>
-                                </div>
-                                <div class="metric">
-                                    <span class="metric-label">Industry Rank</span>
-                                    <span class="metric-value">#3</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="preview-section">
-                        <h2>Market Analysis</h2>
-                        <div class="market-segments">
-                            <div class="segment">
-                                <h3>Core Market</h3>
-                                <div class="segment-stats">
-                                    <div class="stat">
-                                        <span class="stat-label">Size</span>
-                                        <span class="stat-value">$12.4B</span>
-                                    </div>
-                                    <div class="stat">
-                                        <span class="stat-label">Growth</span>
-                                        <span class="stat-value trend-up">↑ 8.2%</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="segment">
-                                <h3>Emerging Markets</h3>
-                                <div class="segment-stats">
-                                    <div class="stat">
-                                        <span class="stat-label">Size</span>
-                                        <span class="stat-value">$3.8B</span>
-                                    </div>
-                                    <div class="stat">
-                                        <span class="stat-label">Growth</span>
-                                        <span class="stat-value trend-up">↑ 22.5%</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="preview-section">
-                        <h2>Competitive Analysis</h2>
-                        <div class="competitor-analysis">
-                            <div class="competitor">
-                                <span class="competitor-name">Main Competitor A</span>
-                                <div class="competitor-metrics">
-                                    <span class="market-share">18.2%</span>
-                                    <span class="trend trend-down">↓ 2.1%</span>
-                                </div>
-                            </div>
-                            <div class="competitor">
-                                <span class="competitor-name">Main Competitor B</span>
-                                <div class="competitor-metrics">
-                                    <span class="market-share">15.7%</span>
-                                    <span class="trend trend-up">↑ 5.3%</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `;
-        } else {
-            content = `
-                <div class="print-preview-content">
-                    <div class="preview-header-content">
-                        <h1>${requestId} - Due Diligence Snapshot</h1>
-                        <p class="company-name">${company}</p>
-                        <p class="report-date">${date}</p>
-                        <div class="overall-assessment">
-                            <span class="assessment-label">Overall Assessment</span>
-                            <div class="assessment-status warning">
-                                Conditional Verification
-                            </div>
-                        </div>
-                    </div>
-                    <div class="preview-section">
-                        <h2>Due Diligence Summary</h2>
-                        <div class="due-diligence-summary">
-                            <div>
-                                <span>Company Structure</span>
-                                <span class="success">✓ No Issues Found</span>
-                            </div>
-                            <div>
-                                <span>Compliance Check</span>
-                                <span class="warning">⚠ Minor Concerns</span>
-                            </div>
-                            <div>
-                                <span>Fraud Risk Assessment</span>
-                                <span class="success">✓ Low Risk</span>
-                            </div>
-                            <div>
-                                <span>Financial Health</span>
-                                <span class="warning">⚠ Minor Concerns</span>
-                            </div>
-                            <div>
-                                <span>Management Assessment</span>
-                                <span class="success">✓ No Issues Found</span>
-                            </div>
-                            <div>
-                                <span>Marketing & Brand</span>
-                                <span class="success">✓ Strong Position</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="preview-section">
-                        <h2>Risk Alerts</h2>
-                        <div class="risk-alerts">
-                            <div class="risk-alert">
-                                <span class="warning-icon">⚠</span>
-                                <h4>Regulatory Compliance</h4>
-                                <p>Minor compliance gaps identified in international operations</p>
-                            </div>
-                            <div class="risk-alert">
-                                <span class="warning-icon">⚠</span>
-                                <h4>Financial Disclosure</h4>
-                                <p>Additional verification needed for Q3 revenue projections</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="preview-section">
-                        <h2>Key Findings</h2>
-                        <div class="findings-details">
-                            <div class="finding-detail">
-                                <h3>Corporate Structure</h3>
-                                <p>Standard corporate structure with clear ownership hierarchy. All required registrations and licenses are in place.</p>
-                            </div>
-                            <div class="finding-detail">
-                                <h3>Financial Position</h3>
-                                <p>Strong revenue growth but some concerns over Q3 projections. Healthy cash position with manageable debt levels.</p>
-                            </div>
-                            <div class="finding-detail">
-                                <h3>Market Position</h3>
-                                <p>Leading position in core markets with growing market share. Strong brand recognition among key demographics.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="preview-section">
-                        <h2>Recommendations</h2>
-                        <div class="recommendations">
-                            <div class="recommendation-item">
-                                <span class="recommendation-priority high">High Priority</span>
-                                <p>Verify Q3 revenue projections and underlying assumptions</p>
-                            </div>
-                            <div class="recommendation-item">
-                                <span class="recommendation-priority medium">Medium Priority</span>
-                                <p>Review international compliance procedures</p>
-                            </div>
-                            <div class="recommendation-item">
-                                <span class="recommendation-priority low">Low Priority</span>
-                                <p>Update stakeholder communication strategy</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-        
-        previewContainer.innerHTML = content;
-    }
-
-    function closePrintDialog() {
-        printDialog.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-
-    // Event Listeners
-    cancelPrintBtn.addEventListener('click', closePrintDialog);
-    
-    confirmPrintBtn.addEventListener('click', () => {
-        // Implement print functionality
-        window.print();
-        closePrintDialog();
-    });
-    
-    // Close on backdrop click
-    printDialog.addEventListener('click', (e) => {
-        if (e.target === printDialog) {
-            closePrintDialog();
-        }
-    });
-    
-    // Close on escape key
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && printDialog.classList.contains('active')) {
-            closePrintDialog();
-        }
-    });
-
-    // Handle zoom controls
-    const zoomBtns = printDialog.querySelectorAll('.zoom-btn');
-    const zoomLevel = printDialog.querySelector('.zoom-level');
-    let currentZoom = 100;
-    
-    zoomBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const direction = btn.dataset.zoom;
-            if (direction === 'in' && currentZoom < 200) {
-                currentZoom += 25;
-            } else if (direction === 'out' && currentZoom > 50) {
-                currentZoom -= 25;
-            }
-            zoomLevel.textContent = `${currentZoom}%`;
-            updatePreviewZoom();
-        });
-    });
-
-    function updatePreviewZoom() {
-        const preview = printDialog.querySelector('.preview-container');
-        preview.style.transform = `scale(${currentZoom / 100})`;
-        preview.style.transformOrigin = 'top center';
-    }
-
-    // Download Dialog functionality
     function openDownloadDialog(row, type) {
         const dialog = document.getElementById(type === 'research' ? 'researchDownloadPopup' : 'dueDiligenceDownloadPopup');
         dialog.classList.add('active');
@@ -624,7 +283,6 @@ document.addEventListener('DOMContentLoaded', function() {
         cancelBtn.addEventListener('click', closeDialog);
         
         confirmBtn.addEventListener('click', () => {
-            // Here you would implement the actual download logic
             const requestId = row.querySelector('td:first-child').textContent;
             console.log(`Downloading ${type} report ${requestId}`);
             closeDialog();
@@ -636,12 +294,361 @@ document.addEventListener('DOMContentLoaded', function() {
                 closeDialog();
             }
         });
+    }
 
-        // Close on escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && dialog.classList.contains('active')) {
-                closeDialog();
+    function openPrintDialog(row, type) {
+        const printDialog = document.getElementById('printPopup');
+        if (!printDialog) {
+            console.error('Print dialog not found!');
+            return;
+        }
+
+        printDialog.classList.add('active');
+        document.body.style.overflow = 'hidden';
+
+        // Initialize dialog controls
+        const closePrintBtn = printDialog.querySelector('.cancel-print');
+        const cancelPrintBtn = printDialog.querySelector('.cancel-print');
+        const confirmPrintBtn = printDialog.querySelector('.confirm-print');
+
+        // Update print options based on type
+        const optionsSection = printDialog.querySelector('.print-option-group');
+        optionsSection.innerHTML = `
+            <label class="print-option">
+                <input type="radio" name="print-type" value="snapshot" checked>
+                <div class="print-option-content">
+                    <span class="print-option-title">Snapshot Report</span>
+                    <span class="print-option-description">A condensed overview of key findings</span>
+                </div>
+            </label>
+            <label class="print-option">
+                <input type="radio" name="print-type" value="deep-dive">
+                <div class="print-option-content">
+                    <span class="print-option-title">Deep Dive Report</span>
+                    <span class="print-option-description">Comprehensive analysis with details</span>
+                </div>
+            </label>
+        `;
+
+        // Initialize preview functionality
+        function updatePreview(row, type, option = 'snapshot') {
+            const previewContainer = printDialog.querySelector('.preview-container');
+            const requestId = row.querySelector('td:first-child').textContent;
+            const company = row.querySelector('td:nth-child(2)').textContent;
+            const date = row.querySelector('td:nth-child(5)').textContent;
+            
+            let content = '';
+            
+            if (type === 'research') {
+                content = `
+                    <div class="print-preview-content">
+                        <div class="preview-header-content">
+                            <h1>${requestId} - Research Report</h1>
+                            <p class="company-name">${company}</p>
+                            <p class="report-date">${date}</p>
+                        </div>
+                        <div class="preview-section">
+                            <h2>Executive Summary</h2>
+                            <div class="research-summary">
+                                <p>Comprehensive market analysis and competitive positioning assessment for ${company}.</p>
+                                <div class="key-metrics">
+                                    <div class="metric">
+                                        <span class="metric-label">Market Share</span>
+                                        <span class="metric-value">23.5%</span>
+                                    </div>
+                                    <div class="metric">
+                                        <span class="metric-label">Growth Rate</span>
+                                        <span class="metric-value">+15.3%</span>
+                                    </div>
+                                    <div class="metric">
+                                        <span class="metric-label">Industry Rank</span>
+                                        <span class="metric-value">#3</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="preview-section">
+                            <h2>Market Analysis</h2>
+                            <div class="market-segments">
+                                <div class="segment">
+                                    <h3>Core Market</h3>
+                                    <div class="segment-stats">
+                                        <div class="stat">
+                                            <span class="stat-label">Size</span>
+                                            <span class="stat-value">$12.4B</span>
+                                        </div>
+                                        <div class="stat">
+                                            <span class="stat-label">Growth</span>
+                                            <span class="stat-value trend-up">↑ 8.2%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="segment">
+                                    <h3>Emerging Markets</h3>
+                                    <div class="segment-stats">
+                                        <div class="stat">
+                                            <span class="stat-label">Size</span>
+                                            <span class="stat-value">$3.8B</span>
+                                        </div>
+                                        <div class="stat">
+                                            <span class="stat-label">Growth</span>
+                                            <span class="stat-value trend-up">↑ 22.5%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="preview-section">
+                            <h2>Competitive Analysis</h2>
+                            <div class="competitor-analysis">
+                                <div class="competitor">
+                                    <span class="competitor-name">Main Competitor A</span>
+                                    <div class="competitor-metrics">
+                                        <span class="market-share">18.2%</span>
+                                        <span class="trend trend-down">↓ 2.1%</span>
+                                    </div>
+                                </div>
+                                <div class="competitor">
+                                    <span class="competitor-name">Main Competitor B</span>
+                                    <div class="competitor-metrics">
+                                        <span class="market-share">15.7%</span>
+                                        <span class="trend trend-up">↑ 5.3%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else {
+                content = `
+                    <div class="print-preview-content">
+                        <div class="preview-header-content">
+                            <h1>${requestId} - Due Diligence Snapshot</h1>
+                            <p class="company-name">${company}</p>
+                            <p class="report-date">${date}</p>
+                            <div class="overall-assessment">
+                                <span class="assessment-label">Overall Assessment</span>
+                                <div class="assessment-status warning">
+                                    Conditional Verification
+                                </div>
+                            </div>
+                        </div>
+                        <div class="preview-section">
+                            <h2>Due Diligence Summary</h2>
+                            <div class="due-diligence-summary">
+                                <div>
+                                    <span>Company Structure</span>
+                                    <span class="success">✓ No Issues Found</span>
+                                </div>
+                                <div>
+                                    <span>Compliance Check</span>
+                                    <span class="warning">⚠ Minor Concerns</span>
+                                </div>
+                                <div>
+                                    <span>Fraud Risk Assessment</span>
+                                    <span class="success">✓ Low Risk</span>
+                                </div>
+                                <div>
+                                    <span>Financial Health</span>
+                                    <span class="warning">⚠ Minor Concerns</span>
+                                </div>
+                                <div>
+                                    <span>Management Assessment</span>
+                                    <span class="success">✓ No Issues Found</span>
+                                </div>
+                                <div>
+                                    <span>Marketing & Brand</span>
+                                    <span class="success">✓ Strong Position</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="preview-section">
+                            <h2>Risk Alerts</h2>
+                            <div class="risk-alerts">
+                                <div class="risk-alert">
+                                    <span class="warning-icon">⚠</span>
+                                    <h4>Regulatory Compliance</h4>
+                                    <p>Minor compliance gaps identified in international operations</p>
+                                </div>
+                                <div class="risk-alert">
+                                    <span class="warning-icon">⚠</span>
+                                    <h4>Financial Disclosure</h4>
+                                    <p>Additional verification needed for Q3 revenue projections</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="preview-section">
+                            <h2>Key Findings</h2>
+                            <div class="findings-details">
+                                <div class="finding-detail">
+                                    <h3>Corporate Structure</h3>
+                                    <p>Standard corporate structure with clear ownership hierarchy. All required registrations and licenses are in place.</p>
+                                </div>
+                                <div class="finding-detail">
+                                    <h3>Financial Position</h3>
+                                    <p>Strong revenue growth but some concerns over Q3 projections. Healthy cash position with manageable debt levels.</p>
+                                </div>
+                                <div class="finding-detail">
+                                    <h3>Market Position</h3>
+                                    <p>Leading position in core markets with growing market share. Strong brand recognition among key demographics.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="preview-section">
+                            <h2>Recommendations</h2>
+                            <div class="recommendations">
+                                <div class="recommendation-item">
+                                    <span class="recommendation-priority high">High Priority</span>
+                                    <p>Verify Q3 revenue projections and underlying assumptions</p>
+                                </div>
+                                <div class="recommendation-item">
+                                    <span class="recommendation-priority medium">Medium Priority</span>
+                                    <p>Review international compliance procedures</p>
+                                </div>
+                                <div class="recommendation-item">
+                                    <span class="recommendation-priority low">Low Priority</span>
+                                    <p>Update stakeholder communication strategy</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            previewContainer.innerHTML = content;
+        }
+
+        // Set up event listeners
+        function closePrintDialog() {
+            printDialog.classList.remove('active');
+            document.body.style.overflow = '';
+            closePrintBtn.removeEventListener('click', closePrintDialog);
+            cancelPrintBtn.removeEventListener('click', closePrintDialog);
+            confirmPrintBtn.removeEventListener('click', handlePrint);
+        }
+
+        function handlePrint() {
+            window.print();
+            closePrintDialog();
+        }
+
+        closePrintBtn.addEventListener('click', closePrintDialog);
+        cancelPrintBtn.addEventListener('click', closePrintDialog);
+        confirmPrintBtn.addEventListener('click', handlePrint);
+
+        // Show initial preview
+        updatePreview(row, type);
+        
+        // Add change listener for print options
+        const radioButtons = optionsSection.querySelectorAll('input[type="radio"]');
+        radioButtons.forEach(radio => {
+            radio.addEventListener('change', () => updatePreview(row, type, radio.value));
+        });
+    }
+
+    // Status pill filtering
+    const statusPills = document.querySelectorAll('.status-pill');
+    statusPills.forEach(pill => {
+        pill.addEventListener('click', () => {
+            statusPills.forEach(p => p.classList.remove('active'));
+            pill.classList.add('active');
+            // Add filtering logic here
+        });
+    });
+
+    // Table row and checkbox selection
+    const selectAllCheckbox = document.getElementById('select-all');
+    const rowCheckboxes = document.querySelectorAll('.row-checkbox');
+    const batchActionsBar = document.querySelector('.batch-actions-bar');
+    const selectedCount = document.querySelector('.selected-count');
+
+    // Select all checkbox
+    selectAllCheckbox.addEventListener('change', () => {
+        const isChecked = selectAllCheckbox.checked;
+        rowCheckboxes.forEach(checkbox => {
+            checkbox.checked = isChecked;
+            const row = checkbox.closest('tr');
+            if (row) {
+                row.classList.toggle('selected', isChecked);
+            }
+        });
+        updateBatchActionsBar();
+    });
+
+    // Individual row checkboxes
+    rowCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', (e) => {
+            e.stopPropagation(); // Prevent row click event
+            const row = checkbox.closest('tr');
+            if (row) {
+                row.classList.toggle('selected', checkbox.checked);
+            }
+            updateSelectAllCheckbox();
+            updateBatchActionsBar();
+        });
+    });
+
+    // Row click handler
+    document.querySelectorAll('.requests-table tbody tr').forEach(row => {
+        row.addEventListener('click', (e) => {
+            if (e.target.closest('.actions') || e.target.closest('.checkbox-cell')) return;
+            
+            const checkbox = row.querySelector('.row-checkbox');
+            if (checkbox) {
+                checkbox.checked = !checkbox.checked;
+                row.classList.toggle('selected', checkbox.checked);
+                updateSelectAllCheckbox();
+                updateBatchActionsBar();
+            }
+        });
+    });
+
+    function updateSelectAllCheckbox() {
+        const checkboxes = Array.from(rowCheckboxes);
+        const allChecked = checkboxes.every(cb => cb.checked);
+        const someChecked = checkboxes.some(cb => cb.checked);
+        
+        selectAllCheckbox.checked = allChecked;
+        selectAllCheckbox.indeterminate = someChecked && !allChecked;
+    }
+
+    function updateBatchActionsBar() {
+        const selectedRows = document.querySelectorAll('.row-checkbox:checked');
+        if (selectedRows.length > 0) {
+            batchActionsBar.classList.remove('hidden');
+            selectedCount.textContent = `${selectedRows.length} items selected`;
+        } else {
+            batchActionsBar.classList.add('hidden');
+        }
+    }
+
+    // Function to initialize action buttons based on request status
+    function initializeActionButtons() {
+        const rows = document.querySelectorAll('tbody tr');
+        
+        rows.forEach(row => {
+            const statusBadge = row.querySelector('.status-badge');
+            const downloadBtn = row.querySelector('button[title="Download"]');
+            const printBtn = row.querySelector('button[title="Print"]');
+            
+            if (statusBadge && downloadBtn && printBtn) {
+                const isCompleted = statusBadge.classList.contains('completed');
+                
+                if (isCompleted) {
+                    downloadBtn.setAttribute('data-action', 'download');
+                    printBtn.setAttribute('data-action', 'print');
+                    downloadBtn.disabled = false;
+                    printBtn.disabled = false;
+                } else {
+                    downloadBtn.removeAttribute('data-action');
+                    printBtn.removeAttribute('data-action');
+                    downloadBtn.disabled = true;
+                    printBtn.disabled = true;
+                }
             }
         });
     }
-}); 
+
+    // Initialize action buttons
+    initializeActionButtons();
+});

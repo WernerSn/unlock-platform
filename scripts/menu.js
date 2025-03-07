@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 setActiveStates();
                 // Re-initialize mobile menu handlers after menu is loaded
                 initializeMobileMenu();
+                initializeSettingsDropdown();
             }
         });
     });
@@ -74,4 +75,30 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initialize mobile menu
     initializeMobileMenu();
+
+    // Simplified settings dropdown functionality
+    const settingsBtn = document.querySelector('.settings-btn');
+    const settingsDropdown = document.querySelector('.settings-dropdown');
+    const signoutBtn = document.querySelector('.signout-btn');
+    
+    if (settingsBtn && settingsDropdown && signoutBtn) {
+        settingsBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            settingsDropdown.classList.toggle('hidden');
+            console.log('Settings clicked');  // Debug line
+        });
+
+        // Close when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!settingsDropdown.contains(e.target) && !settingsBtn.contains(e.target)) {
+                settingsDropdown.classList.add('hidden');
+            }
+        });
+
+        // Add sign out functionality
+        signoutBtn.addEventListener('click', function() {
+            window.location.href = 'index.html';  // Changed from ../index.html to index.html
+        });
+    }
 }); 

@@ -52,6 +52,7 @@ body {
 }
 
 .header-right {
+    position: relative;
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -106,16 +107,17 @@ body {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-areas:
-        "top-left top-middle top-right"
+        "reports requests notifications"
         "carousel carousel carousel"
         "bottom-left bottom-middle bottom-right";
     gap: 1rem;
 }
 
-/* Top Row Sections */
+/* Top Row Sections - make them all consistent */
 .reports-section,
 .due-diligence-section,
-.research-requests-section {
+.research-requests-section,
+.notifications-section {  /* Add notifications section */
     background: white;
     border-radius: 12px;
     padding: 16px;
@@ -125,6 +127,21 @@ body {
     display: flex;
     flex-direction: column;
     gap: 12px;
+    height: 100%;  /* Ensure all containers have same height */
+    box-sizing: border-box;  /* Include padding in height calculation */
+}
+
+/* Assign grid areas */
+.reports-section {
+    grid-area: reports;
+}
+
+.due-diligence-section {
+    grid-area: requests;
+}
+
+.notifications-section {
+    grid-area: notifications;
 }
 
 .header-actions {
@@ -592,36 +609,41 @@ body {
 }
 
 /* Responsive Design */
-@media screen and (max-width: 1200px) {
-    .dashboard-content {
-        gap: 1.25rem;
+@media screen and (max-width: 1024px) {
+    .main-content {
+        padding: 1.5rem;
     }
 
-    .report-card {
-        flex: 0 0 calc((100% - 1.5rem) / 2); /* Show 2 cards on medium screens */
+    .dashboard-content {
+        display: flex;  /* Change to flex instead of grid */
+        flex-direction: column;  /* Stack everything vertically */
+        gap: 16px;
+    }
+
+    /* Reset grid areas since we're using flex */
+    .reports-section,
+    .due-diligence-section,
+    .notifications-section,
+    .carousel-section,
+    .bottom-left-section,
+    .bottom-middle-section,
+    .bottom-right-section {
+        width: 100%;  /* Take full width */
+        grid-area: unset;  /* Remove grid areas */
+    }
+
+    /* Keep the sections visible */
+    .reports-section,
+    .due-diligence-section,
+    .notifications-section {
+        display: flex;
     }
 }
 
+/* Keep mobile the same since it's already in single column */
 @media screen and (max-width: 768px) {
     .main-content {
         padding: 1rem;
-    }
-
-    .report-card {
-        flex: 0 0 100%; /* Show 1 card on mobile */
-    }
-    
-    .reports-carousel {
-        margin: 0 1rem;
-        width: calc(100% - 2rem);
-    }
-
-    .mobile-menu-toggle {
-        display: block;
-    }
-
-    .dashboard-content {
-        gap: 1rem;
     }
 }
 
@@ -965,11 +987,9 @@ body {
 
 /* Notifications Section */
 .notifications-section {
-    background: white;
-    border-radius: 12px;
-    padding: 24px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    margin-top: 24px;
+    grid-area: notifications;
+    display: flex;
+    flex-direction: column;
 }
 
 .notifications-section .section-header {
@@ -979,24 +999,12 @@ body {
     margin-bottom: 20px;
 }
 
-.mark-all-read {
-    color: #0D8ABC;
-    background: none;
-    border: none;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: color 0.2s;
-}
-
-.mark-all-read:hover {
-    color: #0A6D8F;
-}
-
 .notifications-list {
+    flex: 1;
     display: flex;
     flex-direction: column;
     gap: 12px;
+    overflow-y: auto;
 }
 
 .notification-item {
@@ -1333,4 +1341,58 @@ body {
 
 .download-option svg {
     color: #0D8ABC;
+}
+
+/* Settings Dropdown */
+.settings-dropdown {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    right: 0;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 
+                0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    padding: 0.5rem;
+    z-index: 1000;
+    min-width: 150px;
+    display: block;
+}
+
+.settings-dropdown.hidden {
+    display: none;
+}
+
+.signout-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: none;
+    background: none;
+    color: #64748b;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.signout-btn:hover {
+    background: #f1f5f9;
+    color: #ef4444;
+}
+
+/* Add back the mark all as read button styles */
+.mark-all-read {
+    color: #0D8ABC;
+    background: none;
+    border: none;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.mark-all-read:hover {
+    color: #0A6D8F;
 }
