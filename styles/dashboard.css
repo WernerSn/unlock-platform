@@ -620,11 +620,16 @@ body {
             "reports requests"
             "notifications notifications"
             "carousel carousel"
-            "bottom-left bottom-right"
-            "bottom-middle bottom-middle";
+            "bottom-left bottom-middle"
+            "bottom-right bottom-right";
         gap: 16px;
-        padding: 0;
-        max-width: 100%;
+    }
+
+    /* Keep the sections visible */
+    .reports-section,
+    .due-diligence-section,
+    .notifications-section {
+        display: flex;  /* Ensure flex layout is maintained */
     }
 }
 
@@ -646,9 +651,11 @@ body {
         gap: 16px;
     }
 
-    .reports-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
+    /* Ensure mobile layout maintains visibility */
+    .reports-section,
+    .due-diligence-section,
+    .notifications-section {
+        display: flex;
     }
 
     .mobile-menu-toggle {
