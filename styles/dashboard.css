@@ -615,31 +615,7 @@ body {
     }
 
     .dashboard-content {
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-areas:
-            "reports requests"
-            "notifications notifications"
-            "carousel carousel"
-            "bottom-left bottom-middle"
-            "bottom-right bottom-right";
-        gap: 16px;
-    }
-
-    /* Keep the sections visible */
-    .reports-section,
-    .due-diligence-section,
-    .notifications-section {
-        display: flex;  /* Ensure flex layout is maintained */
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .main-content {
-        padding: 1rem;
-    }
-
-    .dashboard-content {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr;  /* Single column */
         grid-template-areas:
             "reports"
             "requests"
@@ -651,15 +627,18 @@ body {
         gap: 16px;
     }
 
-    /* Ensure mobile layout maintains visibility */
+    /* Keep the sections visible */
     .reports-section,
     .due-diligence-section,
     .notifications-section {
         display: flex;
     }
+}
 
-    .mobile-menu-toggle {
-        display: block;
+/* Keep mobile the same since it's already in single column */
+@media screen and (max-width: 768px) {
+    .main-content {
+        padding: 1rem;
     }
 }
 
