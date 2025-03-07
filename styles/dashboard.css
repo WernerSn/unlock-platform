@@ -617,19 +617,14 @@ body {
     .dashboard-content {
         grid-template-columns: repeat(2, 1fr);
         grid-template-areas:
-            "top-left top-right"
-            "top-middle top-middle"
+            "reports requests"
+            "notifications notifications"
             "carousel carousel"
             "bottom-left bottom-right"
             "bottom-middle bottom-middle";
         gap: 16px;
-        padding: 0 1rem;
+        padding: 0;
         max-width: 100%;
-    }
-
-    .reports-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
     }
 }
 
@@ -638,35 +633,26 @@ body {
         padding: 1rem;
     }
 
-    .report-card {
-        flex: 0 0 100%; /* Show 1 card on mobile */
-    }
-    
-    .reports-carousel {
-        margin: 0 1rem;
-        width: calc(100% - 2rem);
-    }
-
-    .mobile-menu-toggle {
-        display: block;
-    }
-
     .dashboard-content {
         grid-template-columns: 1fr;
         grid-template-areas:
-            "top-left"
-            "top-middle"
-            "top-right"
+            "reports"
+            "requests"
+            "notifications"
             "carousel"
             "bottom-left"
             "bottom-middle"
             "bottom-right";
         gap: 16px;
-        padding: 0 0.5rem;
     }
 
     .reports-grid {
         grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .mobile-menu-toggle {
+        display: block;
     }
 }
 
