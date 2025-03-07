@@ -615,16 +615,21 @@ body {
     }
 
     .dashboard-content {
-        grid-template-columns: 1fr;  /* Single column */
-        grid-template-areas:
-            "reports"
-            "requests"
-            "notifications"
-            "carousel"
-            "bottom-left"
-            "bottom-middle"
-            "bottom-right";
+        display: flex;  /* Change to flex instead of grid */
+        flex-direction: column;  /* Stack everything vertically */
         gap: 16px;
+    }
+
+    /* Reset grid areas since we're using flex */
+    .reports-section,
+    .due-diligence-section,
+    .notifications-section,
+    .carousel-section,
+    .bottom-left-section,
+    .bottom-middle-section,
+    .bottom-right-section {
+        width: 100%;  /* Take full width */
+        grid-area: unset;  /* Remove grid areas */
     }
 
     /* Keep the sections visible */
