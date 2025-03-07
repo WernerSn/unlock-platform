@@ -592,13 +592,20 @@ body {
 }
 
 /* Responsive Design */
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1024px) {
     .dashboard-content {
-        gap: 1.25rem;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-areas:
+            "top-left top-right"
+            "top-middle top-middle"
+            "carousel carousel"
+            "bottom-left bottom-right"
+            "bottom-middle bottom-middle";
+        gap: 16px;
     }
 
-    .report-card {
-        flex: 0 0 calc((100% - 1.5rem) / 2); /* Show 2 cards on medium screens */
+    .reports-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
@@ -621,7 +628,21 @@ body {
     }
 
     .dashboard-content {
-        gap: 1rem;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "top-left"
+            "top-middle"
+            "top-right"
+            "carousel"
+            "bottom-left"
+            "bottom-middle"
+            "bottom-right";
+        gap: 16px;
+        padding: 16px;
+    }
+
+    .reports-grid {
+        grid-template-columns: 1fr;
     }
 }
 
