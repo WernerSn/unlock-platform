@@ -644,4 +644,80 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
+    // Status pill filtering
+    const statusPills = document.querySelectorAll('.status-pill');
+    statusPills.forEach(pill => {
+        pill.addEventListener('click', () => {
+            statusPills.forEach(p => p.classList.remove('active'));
+            pill.classList.add('active');
+            // Add filtering logic here
+        });
+    });
+
+    // Table row and checkbox selection
+    const selectAllCheckbox = document.getElementById('select-all');
+    const rowCheckboxes = document.querySelectorAll('.row-checkbox');
+    const batchActionsBar = document.querySelector('.batch-actions-bar');
+    const selectedCount = document.querySelector('.selected-count');
+
+    // Select all checkbox
+    selectAllCheckbox.addEventListener('change', () => {
+        const isChecked = selectAllCheckbox.checked;
+        rowCheckboxes.forEach(checkbox => {
+            checkbox.checked = isChecked;
+            const row = checkbox.closest('tr');
+            if (row) {
+                row.classList.toggle('selected', isChecked);
+            }
+        });
+        updateBatchActionsBar();
+    });
+
+    // Individual row checkboxes
+    rowCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', (e) => {
+            e.stopPropagation(); // Prevent row click event
+            const row = checkbox.closest('tr');
+            if (row) {
+                row.classList.toggle('selected', checkbox.checked);
+            }
+            updateSelectAllCheckbox();
+            updateBatchActionsBar();
+        });
+    });
+
+    // Row click handler
+    document.querySelectorAll('.requests-table tbody tr').forEach(row => {
+        row.addEventListener('click', (e) => {
+            if (e.target.closest('.actions') || e.target.closest('.checkbox-cell')) return;
+            
+            const checkbox = row.querySelector('.row-checkbox');
+            if (checkbox) {
+                checkbox.checked = !checkbox.checked;
+                row.classList.toggle('selected', checkbox.checked);
+                updateSelectAllCheckbox();
+                updateBatchActionsBar();
+            }
+        });
+    });
+
+    function updateSelectAllCheckbox() {
+        const checkboxes = Array.from(rowCheckboxes);
+        const allChecked = checkboxes.every(cb => cb.checked);
+        const someChecked = checkboxes.some(cb => cb.checked);
+        
+        selectAllCheckbox.checked = allChecked;
+        selectAllCheckbox.indeterminate = someChecked && !allChecked;
+    }
+
+    function updateBatchActionsBar() {
+        const selectedRows = document.querySelectorAll('.row-checkbox:checked');
+        if (selectedRows.length > 0) {
+            batchActionsBar.classList.remove('hidden');
+            selectedCount.textContent = `${selectedRows.length} items selected`;
+        } else {
+            batchActionsBar.classList.add('hidden');
+        }
+    }
 }); 

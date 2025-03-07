@@ -41,17 +41,50 @@
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
-/* Search input */
+/* Search and filters responsive design */
+.filters-bar {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
 .search-container {
     flex: 1;
+    min-width: 200px;
+    position: relative;
+}
+
+.search-container svg {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    color: #64748b;
 }
 
 .search-input {
     width: 100%;
-    padding: 8px 12px;
+    padding: 10px 12px 10px 40px;
     border: 1px solid #e2e8f0;
-    border-radius: 6px;
+    border-radius: 8px;
     font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #0D8ABC;
+    box-shadow: 0 0 0 2px rgba(13, 138, 188, 0.1);
+}
+
+.filter-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 /* Filter button */
@@ -248,44 +281,64 @@ input[type="date"] {
     color: #0D8ABC;
 }
 
-/* Tablet breakpoint */
+/* Responsive adjustments */
 @media screen and (max-width: 1024px) {
-    .reports-container {
-        padding: 0 1rem;
-    }
-
-    .reports-filters {
-        flex-direction: column;
-        align-items: stretch;
+    .filters-bar {
         gap: 12px;
     }
 
-    .filter-controls {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 12px;
-        align-items: center;
+    .filter-group {
+        flex: 1;
+        min-width: calc(50% - 8px);
+    }
+
+    .filter-group select,
+    .filter-group input {
+        width: 100%;
     }
 
     .search-container {
-        width: 100%;
+        flex: 1;
+        min-width: 100%;
+        order: -1; /* Move search to top */
     }
 
-    .filter-btn {
+    .apply-filters-btn {
         width: 100%;
+        margin-top: 8px;
     }
 }
 
-/* Mobile breakpoint */
 @media screen and (max-width: 768px) {
-    .filter-controls {
-        grid-template-columns: 1fr;
-        gap: 8px;
+    .filters-bar {
+        flex-direction: column;
+        gap: 16px;
     }
 
-    .filter-controls select,
-    .filter-controls input[type="date"] {
+    .filter-group {
         width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .filter-group label {
+        margin-bottom: 4px;
+    }
+
+    .filter-select,
+    .filter-date {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .search-input {
+        padding: 12px 12px 12px 40px;
+        font-size: 16px; /* Larger for mobile */
+    }
+
+    .apply-filters-btn {
+        padding: 12px;
+        font-size: 16px;
     }
 }
 
