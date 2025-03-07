@@ -1,0 +1,278 @@
+.contact-container {
+    padding: 32px;
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.contact-header {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.contact-header h1 {
+    font-size: 32px;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 8px;
+}
+
+.contact-header p {
+    color: #64748b;
+    font-size: 16px;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    margin-bottom: 48px;
+}
+
+/* Support Sections */
+.contact-section {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 24px;
+}
+
+.contact-section h2 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 24px;
+}
+
+/* Support Channels */
+.channel-cards {
+    display: grid;
+    gap: 24px;
+}
+
+.channel-card {
+    background: #F8FAFC;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 24px;
+    transition: all 0.2s;
+}
+
+.channel-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px -2px rgba(13, 138, 188, 0.1);
+}
+
+.channel-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.channel-card.priority .channel-icon {
+    background: #EFF6FF;
+    color: #0D8ABC;
+}
+
+.channel-card.email .channel-icon {
+    background: #F0FDF4;
+    color: #16A34A;
+}
+
+.channel-card.phone .channel-icon {
+    background: #FEF3C7;
+    color: #D97706;
+}
+
+.channel-card h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 8px;
+}
+
+.channel-card p {
+    color: #64748b;
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.response-time {
+    font-size: 13px;
+    color: #0D8ABC;
+    margin-bottom: 16px;
+}
+
+.channel-btn {
+    display: inline-block;
+    padding: 8px 16px;
+    background: white;
+    border: 1px solid #0D8ABC;
+    border-radius: 6px;
+    color: #0D8ABC;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+}
+
+.channel-btn:hover {
+    background: #0D8ABC;
+    color: white;
+}
+
+/* Support Ticket Form */
+.support-form {
+    padding: 24px;
+    background: #F8FAFC;
+    border-radius: 8px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #1e293b;
+    margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #1e293b;
+    background: white;
+    box-sizing: border-box;
+}
+
+.form-group textarea {
+    min-height: 120px;
+    max-width: 100%;
+}
+
+.file-upload {
+    position: relative;
+}
+
+.file-upload input[type="file"] {
+    display: none;
+}
+
+.file-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background: white;
+    border: 1px dashed #e2e8f0;
+    border-radius: 6px;
+    color: #64748b;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.file-label:hover {
+    border-color: #0D8ABC;
+    color: #0D8ABC;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background: #0D8ABC;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.submit-btn:hover {
+    background: #0b7ba8;
+}
+
+/* Office Locations */
+.office-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+}
+
+.office-card {
+    background: #F8FAFC;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+}
+
+.office-icon {
+    width: 48px;
+    height: 48px;
+    background: #EFF6FF;
+    color: #0D8ABC;
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+}
+
+.office-card h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 12px;
+}
+
+.office-card p {
+    color: #64748b;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.office-hours {
+    color: #0D8ABC;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+@media (max-width: 1024px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-group textarea {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-container {
+        padding: 24px;
+    }
+
+    .contact-header h1 {
+        font-size: 24px;
+    }
+
+    .office-grid {
+        grid-template-columns: 1fr;
+    }
+} 

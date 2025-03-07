@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Unlock Platform - Reports</title>
+    <link rel="stylesheet" href="styles/dashboard.css">
+    <link rel="stylesheet" href="styles/menu.css">
+    <link rel="stylesheet" href="styles/reports.css">
+    <script src="scripts/menu.js" type="module"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <div id="menu-container"></div>
+
+        <header class="persistent-header">
+            <div class="header-left">
+                <div class="breadcrumb">
+                    <a href="dashboard.html">Dashboard</a>
+                    <span class="separator">/</span>
+                    <span>Reports</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <button class="notification-btn">
+                    <svg viewBox="0 0 24 24" width="24" height="24">
+                        <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z" fill="currentColor"/>
+                    </svg>
+                    <span class="notification-badge">2</span>
+                </button>
+                <div class="user-profile">
+                    <img src="https://ui-avatars.com/api/?name=Dave+Smith&background=0D8ABC&color=fff" alt="Dave Smith">
+                    <span>Dave Smith</span>
+                </div>
+                <button class="settings-btn" aria-label="Settings">
+                    <svg viewBox="0 0 24 24" width="24" height="24">
+                        <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" fill="currentColor"/>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="reports-container">
+                <h1 class="page-title">View Your Reports</h1>
+                
+                <div class="reports-filters">
+                    <div class="search-container">
+                        <input type="text" class="search-input" placeholder="Find Report">
+                    </div>
+                    <button class="filter-btn">
+                        <span>Filter</span>
+                    </button>
+                    <div class="filter-controls">
+                        <select>
+                            <option value="">Industry</option>
+                            <!-- options -->
+                        </select>
+                        <label>From</label>
+                        <input type="date">
+                        <label>To</label>
+                        <input type="date">
+                        <button class="apply-btn">Apply</button>
+                    </div>
+                </div>
+
+                <div class="reports-tabs">
+                    <button class="tab-btn active">Available Due Diligence Reports</button>
+                    <button class="tab-btn">Matching Due Diligence Reports</button>
+                    <button class="tab-btn">Research Reports</button>
+                </div>
+
+                <div class="reports-body">
+                    <div class="reports-grid-section active">
+                        <h2 class="section-title">Your requested due diligence reports</h2>
+                        <div class="reports-grid">
+                            <div class="report-card">
+                                <img src="assets/report1.jpg" alt="Elite Wine & Whisky Ltd" class="report-image">
+                                <div class="report-details">
+                                    <h3>Elite Wine & Whisky Ltd</h3>
+                                    <p>Elite Wine & Whisky Ltd specialises in sourcing and managing rare fine wines and premium whiskies for collectors and investors...</p>
+                                    <div class="report-meta">
+                                        <div class="meta-group">
+                                            <div class="status positive">Positive unlock</div>
+                                            <div class="date">Competition date: 10 Nov 2024</div>
+                                        </div>
+                                        <button class="expand-btn" aria-label="View Report">
+                                            <svg viewBox="0 0 24 24" width="24" height="24">
+                                                <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" fill="currentColor"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="report-card">
+                                <img src="assets/report2.jpg" alt="The London Wine Cellar" class="report-image">
+                                <div class="report-details">
+                                    <h3>The London Wine Cellar</h3>
+                                    <p>The London Wine Cellar is a trusted buyer and seller of fine wines, offering competitive valuations and seamless transactions...</p>
+                                    <div class="report-meta">
+                                        <div class="meta-group">
+                                            <div class="status positive">Positive unlock</div>
+                                            <div class="date">Competition date: 10 Nov 2024</div>
+                                        </div>
+                                        <button class="expand-btn" aria-label="View Report">
+                                            <svg viewBox="0 0 24 24" width="24" height="24">
+                                                <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" fill="currentColor"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="report-card">
+                                <img src="assets/report3.jpg" alt="Maddox Gallery" class="report-image">
+                                <div class="report-details">
+                                    <h3>Maddox Gallery</h3>
+                                    <p>Maddox Gallery is a leading contemporary art gallery specialising in blue-chip and emerging artists...</p>
+                                    <div class="report-meta">
+                                        <div class="meta-group">
+                                            <div class="status positive">Positive unlock</div>
+                                            <div class="date">Competition date: 10 Nov 2024</div>
+                                        </div>
+                                        <button class="expand-btn" aria-label="View Report">
+                                            <svg viewBox="0 0 24 24" width="24" height="24">
+                                                <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" fill="currentColor"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="report-card">
+                                <img src="assets/report4.jpg" alt="Rally" class="report-image">
+                                <div class="report-details">
+                                    <h3>Rally</h3>
+                                    <p>Rally is a platform that lets investors buy and trade shares in rare collectibles, from classic cars to fine wine...</p>
+                                    <div class="report-meta">
+                                        <div class="meta-group">
+                                            <div class="status positive">Positive unlock</div>
+                                            <div class="date">Competition date: 10 Nov 2024</div>
+                                        </div>
+                                        <button class="expand-btn" aria-label="View Report">
+                                            <svg viewBox="0 0 24 24" width="24" height="24">
+                                                <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" fill="currentColor"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="report-card">
+                                <img src="assets/report5.jpg" alt="Sotheby's Wine" class="report-image">
+                                <div class="report-details">
+                                    <h3>Sotheby's Wine</h3>
+                                    <p>Sotheby's Wine is a premier destination for fine wine auctions, retail, and advisory services...</p>
+                                    <div class="report-meta">
+                                        <div class="meta-group">
+                                            <div class="status positive">Positive unlock</div>
+                                            <div class="date">Competition date: 10 Nov 2024</div>
+                                        </div>
+                                        <button class="expand-btn" aria-label="View Report">
+                                            <svg viewBox="0 0 24 24" width="24" height="24">
+                                                <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" fill="currentColor"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="report-card request-card">
+                                <div class="request-content">
+                                    <div class="add-icon">
+                                        <svg viewBox="0 0 24 24" width="32" height="32">
+                                            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="currentColor"/>
+                                        </svg>
+                                    </div>
+                                    <h3>Request a Due Diligence Report</h3>
+                                    <p>Start a new due diligence request for your target company</p>
+                                    <a href="new-request.html" class="request-link">Create Request</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="reports-grid-section">
+                        <h2 class="section-title">Matching reports for your industry</h2>
+                        <div class="reports-grid">
+                            <div class="report-card locked">
+                                <div class="lock-message">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                                    </svg>
+                                    <span>Unlock this report</span>
+                                </div>
+                                <img src="assets/report6.jpg" alt="Fine Wine Investment Ltd" class="report-image">
+                                <div class="report-details">
+                                    <h3>Fine Wine Investment Ltd</h3>
+                                    <p>Fine Wine Investment Ltd is a boutique firm specialising in sourcing and managing rare vintages for high-net-worth investors...</p>
+                                    <div class="report-meta">
+                                        <div class="meta-group">
+                                            <div class="status positive">Positive unlock</div>
+                                            <div class="date">Competition date: 15 Nov 2024</div>
+                                        </div>
+                                        <button class="expand-btn" aria-label="View Report">
+                                            <svg viewBox="0 0 24 24" width="24" height="24">
+                                                <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" fill="currentColor"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="report-card">
+                                <img src="assets/report7.jpg" alt="Vintage Wines & Co" class="report-image">
+                                <div class="report-details">
+                                    <h3>Vintage Wines & Co</h3>
+                                    <p>Vintage Wines & Co is a premier merchant offering rare and collectible wines, catering to connoisseurs and investors alike...</p>
+                                    <div class="report-meta">
+                                        <div class="meta-group">
+                                            <div class="status positive">Positive unlock</div>
+                                            <div class="date">Competition date: 12 Nov 2024</div>
+                                        </div>
+                                        <button class="expand-btn" aria-label="View Report">
+                                            <svg viewBox="0 0 24 24" width="24" height="24">
+                                                <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" fill="currentColor"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="report-card">
+                                <img src="assets/report8.jpg" alt="Wine Collectors Group" class="report-image">
+                                <div class="report-details">
+                                    <h3>Wine Collectors Group</h3>
+                                    <p>Wine Collectors Group is an exclusive network for enthusiasts and investors seeking rare and fine wines....</p>
+                                    <div class="report-meta">
+                                        <div class="meta-group">
+                                            <div class="status positive">Positive unlock</div>
+                                            <div class="date">Competition date: 8 Nov 2024</div>
+                                        </div>
+                                        <button class="expand-btn" aria-label="View Report">
+                                            <svg viewBox="0 0 24 24" width="24" height="24">
+                                                <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" fill="currentColor"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="report-card">
+                                <img src="assets/report9.jpg" alt="Global Wine Trading" class="report-image">
+                                <div class="report-details">
+                                    <h3>Global Wine Trading</h3>
+                                    <p>Global Wine Trading is a specialist firm connecting investors and collectors with rare, high-value wines worldwide...</p>
+                                    <div class="report-meta">
+                                        <div class="meta-group">
+                                            <div class="status positive">Positive unlock</div>
+                                            <div class="date">Competition date: 5 Nov 2024</div>
+                                        </div>
+                                        <button class="expand-btn" aria-label="View Report">
+                                            <svg viewBox="0 0 24 24" width="24" height="24">
+                                                <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" fill="currentColor"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="report-card request-card">
+                                <div class="request-content">
+                                    <div class="add-icon">
+                                        <svg viewBox="0 0 24 24" width="32" height="32">
+                                            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="currentColor"/>
+                                        </svg>
+                                    </div>
+                                    <h3>Request a Due Diligence Report</h3>
+                                    <p>Start a new due diligence request for your target company</p>
+                                    <a href="new-request.html" class="request-link">Create Request</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="reports-grid-section">
+                        <h2 class="section-title">Research reports</h2>
+                        <div class="reports-grid">
+                            <div class="report-card">
+                                <img src="assets/research1.jpg" alt="Wine Industry Analysis" class="report-image">
+                                <div class="report-details">
+                                    <h3>Global Wine Market Trends 2024</h3>
+                                    <p>Comprehensive analysis of market dynamics, consumer preferences, and emerging trends in the global wine industry...</p>
+                                    <div class="report-meta">
+                                        <div class="meta-group">
+                                            <div class="status research">Market Analysis</div>
+                                            <div class="date">Published: Jan 2024</div>
+                                        </div>
+                                        <button class="expand-btn" aria-label="View Report">
+                                            <svg viewBox="0 0 24 24" width="24" height="24">
+                                                <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" fill="currentColor"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="report-card">
+                                <img src="assets/research2.jpg" alt="Investment Analysis" class="report-image">
+                                <div class="report-details">
+                                    <h3>Alternative Assets: Fine Wine Investment</h3>
+                                    <p>In-depth analysis of fine wine as an alternative investment class, including historical performance and market outlook...</p>
+                                    <div class="report-meta">
+                                        <div class="meta-group">
+                                            <div class="status research">Investment Analysis</div>
+                                            <div class="date">Published: Feb 2024</div>
+                                        </div>
+                                        <button class="expand-btn" aria-label="View Report">
+                                            <svg viewBox="0 0 24 24" width="24" height="24">
+                                                <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" fill="currentColor"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="report-card">
+                                <img src="assets/research3.jpg" alt="Regulatory Report" class="report-image">
+                                <div class="report-details">
+                                    <h3>UK Wine Industry Regulations 2024</h3>
+                                    <p>Comprehensive guide to regulatory requirements, compliance standards, and legal framework for wine businesses...</p>
+                                    <div class="report-meta">
+                                        <div class="meta-group">
+                                            <div class="status research">Regulatory</div>
+                                            <div class="date">Published: Mar 2024</div>
+                                        </div>
+                                        <button class="expand-btn" aria-label="View Report">
+                                            <svg viewBox="0 0 24 24" width="24" height="24">
+                                                <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" fill="currentColor"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="report-card">
+                                <img src="assets/research4.jpg" alt="Market Research" class="report-image">
+                                <div class="report-details">
+                                    <h3>European Wine Market Analysis</h3>
+                                    <p>Regional market analysis covering key European wine markets, distribution channels, and competitive landscape...</p>
+                                    <div class="report-meta">
+                                        <div class="meta-group">
+                                            <div class="status research">Market Research</div>
+                                            <div class="date">Published: Mar 2024</div>
+                                        </div>
+                                        <button class="expand-btn" aria-label="View Report">
+                                            <svg viewBox="0 0 24 24" width="24" height="24">
+                                                <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" fill="currentColor"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="report-card request-card">
+                                <div class="request-content">
+                                    <div class="add-icon">
+                                        <svg viewBox="0 0 24 24" width="32" height="32">
+                                            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="currentColor"/>
+                                        </svg>
+                                    </div>
+                                    <h3>Request a Research Report</h3>
+                                    <p>Need a specific market analysis or industry research? Submit your request.</p>
+                                    <a href="new-request.html#research" class="request-link">Request Research</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="scripts/menu.js"></script>
+    <script>
+        fetch('components/menu.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('menu-container').innerHTML = html;
+            });
+    </script>
+    <script src="scripts/reports.js"></script>
+
+    <!-- Add this right before the closing body tag -->
+    <div class="report-detail-panel">
+        <div class="panel-header">
+            <h2>The London Wine Cellar</h2>
+            <button class="close-panel-btn" aria-label="Close panel">
+                <svg viewBox="0 0 24 24" width="24" height="24">
+                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="currentColor"/>
+                </svg>
+            </button>
+        </div>
+        
+        <div class="panel-content">
+            <div class="summary-section">
+                <h3>Summary</h3>
+                <div class="summary-grid">
+                    <div class="summary-item">
+                        <label>Company</label>
+                        <div class="status-wrapper">
+                            <span class="status positive">Reliable Verification</span>
+                        </div>
+                    </div>
+                    <div class="summary-item">
+                        <label>Compliance Check</label>
+                        <div class="status-wrapper">
+                            <span class="status attention">Conditional Verification</span>
+                        </div>
+                    </div>
+                    <div class="summary-item">
+                        <label>Financial Health</label>
+                        <div class="status-wrapper">
+                            <span class="status attention">Conditional Verification</span>
+                        </div>
+                    </div>
+                    <div class="summary-item">
+                        <label>Marketing & Brand Management</label>
+                        <div class="status-wrapper">
+                            <span class="status positive">Reliable Verification</span>
+                        </div>
+                    </div>
+                    <div class="summary-item">
+                        <label>Claims Validation</label>
+                        <div class="status-wrapper">
+                            <span class="status negative">Critical Review Recommended</span>
+                        </div>
+                    </div>
+                    <div class="summary-item">
+                        <label>Investor Feedback</label>
+                        <div class="status-wrapper">
+                            <span class="status positive">Reliable Verification</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-section">
+                <div class="detail-tabs">
+                    <button class="detail-tab active">Company</button>
+                    <button class="detail-tab">Compliance Check</button>
+                    <button class="detail-tab">Financial Health</button>
+                    <button class="detail-tab">Management</button>
+                </div>
+                
+                <div class="tab-content active">
+                    <p>Overview of company structure, business model, and market positioning. Analysis of operational framework, service offerings, and target market segments.</p>
+                    <p>Assessment of company history, growth trajectory, and current market presence. Review of business partnerships, industry relationships, and market reputation.</p>
+                    <p>Evaluation of operational infrastructure, technology systems, and scalability potential. Analysis of competitive advantages and market differentiation strategies.</p>
+                </div>
+
+                <!-- Add Compliance Check tab content -->
+                <div class="tab-content">
+                    <p>Detailed compliance analysis including regulatory adherence, licensing status, and operational standards assessment. Review of documentation, permits, and historical compliance record.</p>
+                    <p>Assessment of internal compliance procedures, risk management protocols, and industry-specific regulatory requirements.</p>
+                </div>
+
+                <!-- Add Financial Health tab content -->
+                <div class="tab-content">
+                    <p>Comprehensive financial analysis including revenue streams, profit margins, and growth trajectory. Review of balance sheets, cash flow statements, and key financial indicators.</p>
+                    <p>Assessment of financial stability, debt obligations, and investment performance metrics. Analysis of market position and financial sustainability.</p>
+                </div>
+
+                <!-- Add Management tab content -->
+                <div class="tab-content">
+                    <p>Evaluation of management team experience, track record, and industry expertise. Assessment of organizational structure and operational efficiency.</p>
+                    <p>Review of business strategy, decision-making processes, and leadership capabilities. Analysis of team composition and succession planning.</p>
+                </div>
+            </div>
+
+            <div class="panel-actions">
+                <button class="action-btn download">
+                    <svg viewBox="0 0 24 24" width="20" height="20">
+                        <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" fill="currentColor"/>
+                    </svg>
+                    Download Report
+                </button>
+                <button class="action-btn share">
+                    <svg viewBox="0 0 24 24" width="20" height="20">
+                        <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92c0-1.61-1.31-2.92-2.92-2.92zM18 4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zM6 13c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm12 7.02c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z" fill="currentColor"/>
+                    </svg>
+                    Share
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add this new panel for research reports -->
+    <div class="research-detail-panel">
+        <div class="panel-header">
+            <h2>Global Wine Market Trends 2024</h2>
+            <button class="close-panel-btn" aria-label="Close panel">
+                <svg viewBox="0 0 24 24" width="24" height="24">
+                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="currentColor"/>
+                </svg>
+            </button>
+        </div>
+        
+        <div class="panel-content">
+            <div class="research-meta">
+                <div class="meta-item">
+                    <label>Report Type</label>
+                    <div class="status research">Market Analysis</div>
+                </div>
+                <div class="meta-item">
+                    <label>Published</label>
+                    <span>January 2024</span>
+                </div>
+                <div class="meta-item">
+                    <label>Last Updated</label>
+                    <span>March 15, 2024</span>
+                </div>
+                <div class="meta-item">
+                    <label>Coverage</label>
+                    <span>Global Markets</span>
+                </div>
+            </div>
+
+            <div class="research-content">
+                <div class="content-section">
+                    <h3>Executive Summary</h3>
+                    <p>This comprehensive market analysis report examines the current state and future prospects of the global wine industry, with a particular focus on investment opportunities and market trends. The report highlights emerging opportunities in premium wine segments and analyzes key market drivers including changing consumer preferences and digital transformation in wine trading.</p>
+                </div>
+
+                <div class="content-section">
+                    <h3>Key Findings</h3>
+                    <ul class="findings-list">
+                        <li>Global market size reached $395.5 billion in 2023</li>
+                        <li>Projected CAGR of 5.8% for 2024-2028</li>
+                        <li>Premium wine segment showing strongest growth</li>
+                        <li>Asia-Pacific emerging as fastest-growing market</li>
+                        <li>Digital platforms driving 35% of fine wine trades</li>
+                        <li>Sustainable and organic wines gaining market share</li>
+                    </ul>
+                </div>
+
+                <div class="content-section">
+                    <h3>Investment Implications</h3>
+                    <ul>
+                        <li>Key investment opportunities in premium wine storage</li>
+                        <li>Digital marketplace platforms showing high potential</li>
+                        <li>Strategic partnerships driving market consolidation</li>
+                        <li>Emerging markets present expansion opportunities</li>
+                    </ul>
+                </div>
+
+                <div class="content-section">
+                    <h3>Risk Factors</h3>
+                    <p>Analysis of key market risks including regulatory changes, supply chain disruptions, and market volatility. Includes mitigation strategies and best practices for investors.</p>
+                </div>
+            </div>
+
+            <div class="panel-actions">
+                <button class="action-btn preview">
+                    <svg viewBox="0 0 24 24" width="20" height="20">
+                        <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zm0 12.5c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" fill="currentColor"/>
+                    </svg>
+                    Preview Full Report
+                </button>
+                <button class="action-btn download">
+                    <svg viewBox="0 0 24 24" width="20" height="20">
+                        <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" fill="currentColor"/>
+                    </svg>
+                    Download Report
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add this before the closing body tag -->
+    <div class="due-diligence-download-popup hidden">
+        <div class="download-content">
+            <svg viewBox="0 0 24 24" width="24" height="24" style="margin: 0 auto 16px; display: block;">
+                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" fill="#0D2B47"/>
+            </svg>
+            <h2>Report Download</h2>
+            
+            <div class="download-details">
+                <div class="detail-group">
+                    <div class="detail-label">Report Name:</div>
+                    <div class="detail-value report-name"></div>
+                </div>
+                <div class="detail-group">
+                    <div class="detail-label">Generated On:</div>
+                    <div class="detail-value">18 December 2024 12:15pm</div>
+                </div>
+                <div class="detail-group version-group">
+                    <div class="detail-label">Report Version:</div>
+                    <div class="version-options">
+                        <label>
+                            <input type="radio" name="version" value="snapshot" checked>
+                            <span>Snapshot Report</span>
+                            <span class="size">1.4 MB</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="version" value="detailed">
+                            <span>Detailed Report</span>
+                            <span class="size">2.46 MB</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="note">
+                <small>Note: This report is confidential. Sharing or misuse is prohibited.</small>
+            </div>
+
+            <div class="popup-actions">
+                <button class="download-btn">Download</button>
+                <button class="cancel-btn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add this for research reports -->
+    <div class="research-download-popup hidden">
+        <div class="download-content">
+            <svg viewBox="0 0 24 24" width="24" height="24" style="margin: 0 auto 16px; display: block;">
+                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" fill="#0D2B47"/>
+            </svg>
+            <h2>Report Download</h2>
+            
+            <div class="download-details">
+                <div class="detail-group">
+                    <div class="detail-label">Report Name:</div>
+                    <div class="detail-value report-name"></div>
+                </div>
+                <div class="detail-group">
+                    <div class="detail-label">Generated On:</div>
+                    <div class="detail-value">18 December 2024 12:15pm</div>
+                </div>
+            </div>
+
+            <div class="note">
+                <small>Note: This report is confidential. Sharing or misuse is prohibited.</small>
+            </div>
+
+            <div class="popup-actions">
+                <button class="download-btn">Download</button>
+                <button class="cancel-btn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add this before the closing body tag -->
+    <div class="share-popup hidden">
+        <div class="share-content">
+            <svg viewBox="0 0 24 24" width="32" height="32">
+                <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92c0-1.61-1.31-2.92-2.92-2.92z" fill="#0D2B47"/>
+            </svg>
+            <h2>Share Report</h2>
+
+            <div class="share-details">
+                <div class="share-row">
+                    <label>Unlock connection</label>
+                    <select class="connection-select">
+                        <option value="timothy">Timothy Watson</option>
+                        <option value="sarah">Sarah Johnson</option>
+                        <option value="michael">Michael Chen</option>
+                    </select>
+                </div>
+
+                <div class="share-row">
+                    <label>Message</label>
+                    <textarea class="share-message" rows="4" placeholder="Add a message...">Hi [Name]
+I came across an interesting opportunity from [Company Name]. Thought I'd share. Let's talk about it.
+Best
+Dave</textarea>
+                </div>
+            </div>
+
+            <div class="popup-actions">
+                <button class="share-btn">Share Report Snippet</button>
+                <button class="cancel-btn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add this before the closing body tag -->
+    <div class="preview-popup hidden">
+        <div class="preview-content">
+            <div class="preview-header">
+                <h2>Report Preview</h2>
+                <button class="close-preview-btn" aria-label="Close preview">
+                    <svg viewBox="0 0 24 24" width="24" height="24">
+                        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="currentColor"/>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="preview-body">
+                <div class="preview-section">
+                    <h3>Executive Summary</h3>
+                    <p>This comprehensive market analysis report examines the current state and future prospects of the global wine industry, with a particular focus on investment opportunities and market trends. The report highlights emerging opportunities in premium wine segments and analyzes key market drivers including changing consumer preferences and digital transformation in wine trading.</p>
+                </div>
+
+                <div class="preview-section">
+                    <h3>Key Market Insights</h3>
+                    <ul>
+                        <li>Global market size reached $395.5 billion in 2023</li>
+                        <li>Projected CAGR of 5.8% for 2024-2028</li>
+                        <li>Premium wine segment showing strongest growth</li>
+                        <li>Asia-Pacific emerging as fastest-growing market</li>
+                        <li>Digital platforms driving 35% of fine wine trades</li>
+                        <li>Sustainable and organic wines gaining market share</li>
+                    </ul>
+                </div>
+
+                <div class="preview-section">
+                    <h3>Investment Implications</h3>
+                    <ul>
+                        <li>Key investment opportunities in premium wine storage</li>
+                        <li>Digital marketplace platforms showing high potential</li>
+                        <li>Strategic partnerships driving market consolidation</li>
+                        <li>Emerging markets present expansion opportunities</li>
+                    </ul>
+                </div>
+
+                <div class="preview-section">
+                    <h3>Risk Factors</h3>
+                    <p>Analysis of key market risks including regulatory changes, supply chain disruptions, and market volatility. Includes mitigation strategies and best practices for investors.</p>
+                </div>
+
+                <div class="preview-cta">
+                    <p>Ready to download the complete report?</p>
+                    <button class="download-preview-btn">Download Full Report</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

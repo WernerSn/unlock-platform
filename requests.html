@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Unlock Platform - Requests</title>
+    <link rel="stylesheet" href="styles/dashboard.css">
+    <link rel="stylesheet" href="styles/menu.css">
+    <link rel="stylesheet" href="styles/requests.css">
+    <script src="scripts/menu.js" type="module"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <div id="menu-container"></div>
+
+        <header class="persistent-header">
+            <div class="header-left">
+                <div class="breadcrumb">
+                    <a href="dashboard.html">Dashboard</a>
+                    <span class="separator">/</span>
+                    <span>Requests</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <button class="notification-btn">
+                    <svg viewBox="0 0 24 24" width="24" height="24">
+                        <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z" fill="currentColor"/>
+                    </svg>
+                    <span class="notification-badge">2</span>
+                </button>
+                <div class="user-profile">
+                    <img src="https://ui-avatars.com/api/?name=Dave+Smith&background=0D8ABC&color=fff" alt="Dave Smith">
+                    <span>Dave Smith</span>
+                </div>
+                <button class="settings-btn" aria-label="Settings">
+                    <svg viewBox="0 0 24 24" width="24" height="24">
+                        <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" fill="currentColor"/>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="requests-container">
+                <div class="requests-header">
+                    <h1 class="page-title">Requests</h1>
+                    <a href="new-request.html" class="primary-button">
+                        <svg viewBox="0 0 24 24" width="20" height="20">
+                            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="currentColor"/>
+                        </svg>
+                        <span>New Request</span>
+                    </a>
+                </div>
+
+                <div class="filters-bar">
+                    <div class="search-container">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                        </svg>
+                        <input type="text" class="search-input" placeholder="Search requests...">
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label>Status</label>
+                        <select class="filter-select">
+                            <option value="">All Status</option>
+                            <option value="processing">Processing</option>
+                            <option value="pending">Pending</option>
+                            <option value="completed">Completed</option>
+                            <option value="cancelled">Cancelled</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label>Date</label>
+                        <input type="date" class="filter-date">
+                    </div>
+
+                    <button class="apply-filters-btn">Apply Filters</button>
+                </div>
+
+                <div class="requests-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Request ID</th>
+                                <th>Company</th>
+                                <th>Type</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#REQ-001</td>
+                                <td>TechCorp Solutions</td>
+                                <td>Due Diligence</td>
+                                <td><span class="status-badge processing">Processing</span></td>
+                                <td>2024-03-15</td>
+                                <td class="actions">
+                                    <button class="icon-button view-request-btn" data-request-id="REQ-001" title="View">
+                                        <svg viewBox="0 0 24 24" width="20" height="20">
+                                            <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" fill="currentColor"/>
+                                        </svg>
+                                    </button>
+                                    <button class="icon-button" title="Download" disabled>
+                                        <svg viewBox="0 0 24 24" width="20" height="20">
+                                            <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" fill="currentColor"/>
+                                        </svg>
+                                    </button>
+                                    <button class="icon-button" title="Print" disabled>
+                                        <svg viewBox="0 0 24 24" width="20" height="20">
+                                            <path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z" fill="currentColor"/>
+                                        </svg>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#REQ-002</td>
+                                <td>FinServ Global</td>
+                                <td>Research</td>
+                                <td><span class="status-badge completed">Completed</span></td>
+                                <td>2024-03-14</td>
+                                <td class="actions">
+                                    <button class="icon-button view-request-btn" data-request-id="REQ-002" title="View">
+                                        <svg viewBox="0 0 24 24" width="20" height="20">
+                                            <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" fill="currentColor"/>
+                                        </svg>
+                                    </button>
+                                    <button class="icon-button" title="Download" data-action="download">
+                                        <svg viewBox="0 0 24 24" width="20" height="20">
+                                            <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" fill="currentColor"/>
+                                        </svg>
+                                    </button>
+                                    <button class="icon-button" title="Print" data-action="print">
+                                        <svg viewBox="0 0 24 24" width="20" height="20">
+                                            <path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z" fill="currentColor"/>
+                                        </svg>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#REQ-003</td>
+                                <td>HealthCare Plus</td>
+                                <td>Due Diligence</td>
+                                <td><span class="status-badge pending">Pending</span></td>
+                                <td>2024-03-13</td>
+                                <td class="actions">
+                                    <button class="icon-button view-request-btn" data-request-id="REQ-003" title="View">
+                                        <svg viewBox="0 0 24 24" width="20" height="20">
+                                            <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" fill="currentColor"/>
+                                        </svg>
+                                    </button>
+                                    <button class="icon-button" title="Download">
+                                        <svg viewBox="0 0 24 24" width="20" height="20">
+                                            <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" fill="currentColor"/>
+                                        </svg>
+                                    </button>
+                                    <button class="icon-button" title="Print" ${request.status === 'completed' ? '' : 'disabled'}>
+                                        <svg viewBox="0 0 24 24" width="20" height="20">
+                                            <path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z" fill="currentColor"/>
+                                        </svg>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#REQ-004</td>
+                                <td>Retail Dynamics</td>
+                                <td>Research</td>
+                                <td><span class="status-badge processing">Processing</span></td>
+                                <td>2024-03-12</td>
+                                <td class="actions">
+                                    <button class="icon-button view-request-btn" data-request-id="REQ-004" title="View">
+                                        <svg viewBox="0 0 24 24" width="20" height="20">
+                                            <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" fill="currentColor"/>
+                                        </svg>
+                                    </button>
+                                    <button class="icon-button" title="Download">
+                                        <svg viewBox="0 0 24 24" width="20" height="20">
+                                            <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" fill="currentColor"/>
+                                        </svg>
+                                    </button>
+                                    <button class="icon-button" title="Print" ${request.status === 'completed' ? '' : 'disabled'}>
+                                        <svg viewBox="0 0 24 24" width="20" height="20">
+                                            <path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z" fill="currentColor"/>
+                                        </svg>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#REQ-005</td>
+                                <td>Manufacturing Pro</td>
+                                <td>Due Diligence</td>
+                                <td><span class="status-badge completed">Completed</span></td>
+                                <td>2024-03-11</td>
+                                <td class="actions">
+                                    <button class="icon-button view-request-btn" data-request-id="REQ-005" title="View">
+                                        <svg viewBox="0 0 24 24" width="20" height="20">
+                                            <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" fill="currentColor"/>
+                                        </svg>
+                                    </button>
+                                    <button class="icon-button" title="Download">
+                                        <svg viewBox="0 0 24 24" width="20" height="20">
+                                            <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" fill="currentColor"/>
+                                        </svg>
+                                    </button>
+                                    <button class="icon-button" title="Print" ${request.status === 'completed' ? '' : 'disabled'}>
+                                        <svg viewBox="0 0 24 24" width="20" height="20">
+                                            <path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z" fill="currentColor"/>
+                                        </svg>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#REQ-006</td>
+                                <td>Energy Solutions</td>
+                                <td>Research</td>
+                                <td><span class="status-badge pending">Pending</span></td>
+                                <td>2024-03-10</td>
+                                <td class="actions">
+                                    <button class="icon-button view-request-btn" data-request-id="REQ-006" title="View">
+                                        <svg viewBox="0 0 24 24" width="20" height="20">
+                                            <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" fill="currentColor"/>
+                                        </svg>
+                                    </button>
+                                    <button class="icon-button" title="Download">
+                                        <svg viewBox="0 0 24 24" width="20" height="20">
+                                            <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" fill="currentColor"/>
+                                        </svg>
+                                    </button>
+                                    <button class="icon-button" title="Print" ${request.status === 'completed' ? '' : 'disabled'}>
+                                        <svg viewBox="0 0 24 24" width="20" height="20">
+                                            <path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z" fill="currentColor"/>
+                                        </svg>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="pagination">
+                    <button class="pagination-btn" disabled>
+                        <svg viewBox="0 0 24 24" width="20" height="20">
+                            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" fill="currentColor"/>
+                        </svg>
+                        Previous
+                    </button>
+                    <div class="pagination-numbers">
+                        <button class="page-number active">1</button>
+                        <button class="page-number">2</button>
+                        <button class="page-number">3</button>
+                        <span class="pagination-dots">...</span>
+                        <button class="page-number">10</button>
+                    </div>
+                    <button class="pagination-btn">
+                        Next
+                        <svg viewBox="0 0 24 24" width="20" height="20">
+                            <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z" fill="currentColor"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="scripts/menu.js"></script>
+    <script>
+        fetch('components/menu.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('menu-container').innerHTML = html;
+            });
+    </script>
+    <script src="scripts/requests.js"></script>
+
+    <!-- Request Details Popup -->
+    <div class="request-popup" id="requestPopup">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h2>Request Details</h2>
+                <button class="close-popup" aria-label="Close popup">✕</button>
+            </div>
+            <div class="popup-body">
+                <div class="request-status">
+                    <span class="status-badge pending">Pending</span>
+                    <span class="request-id">#REQ-2024-001</span>
+                </div>
+                
+                <div class="request-section">
+                    <h3>Basic Information</h3>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <label>Submitted Date</label>
+                            <span>March 15, 2024 14:30 GMT</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Type</label>
+                            <span>Due Diligence Report</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Priority</label>
+                            <span class="priority-high">High</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Expected Delivery</label>
+                            <span>March 18, 2024</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="request-section">
+                    <h3>Subject Details</h3>
+                    <div class="info-grid">
+                        <div class="info-item full-width">
+                            <label>Company Name</label>
+                            <span>TechCorp Solutions Ltd</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Registration Number</label>
+                            <span>TC123456789</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Jurisdiction</label>
+                            <span>United Kingdom</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="request-section">
+                    <h3>Scope & Requirements</h3>
+                    <div class="scope-items">
+                        <div class="scope-item">
+                            <input type="checkbox" checked disabled>
+                            <span>Corporate Structure Analysis</span>
+                        </div>
+                        <div class="scope-item">
+                            <input type="checkbox" checked disabled>
+                            <span>Financial Health Check</span>
+                        </div>
+                        <div class="scope-item">
+                            <input type="checkbox" checked disabled>
+                            <span>Regulatory Compliance Review</span>
+                        </div>
+                        <div class="scope-item">
+                            <input type="checkbox" checked disabled>
+                            <span>Litigation History</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="request-section">
+                    <h3>Additional Notes</h3>
+                    <p class="notes">Please include detailed analysis of recent merger activities and potential regulatory risks in EU markets.</p>
+                </div>
+                
+                <div class="request-section">
+                    <h3>Activity Timeline</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-icon submitted"></div>
+                            <div class="timeline-content">
+                                <span class="timeline-date">Mar 15, 2024 14:30</span>
+                                <p>Request submitted</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-icon processing"></div>
+                            <div class="timeline-content">
+                                <span class="timeline-date">Mar 15, 2024 14:45</span>
+                                <p>Assigned to research team</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="request-actions">
+                    <button class="secondary-button">Download Brief</button>
+                    <button class="primary-button">Track Progress</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Print Dialog -->
+    <div class="print-dialog" id="printPopup">
+        <div class="print-dialog-content">
+            <header class="print-dialog-header">
+                <div class="print-dialog-title">
+                    <svg viewBox="0 0 24 24" width="24" height="24">
+                        <path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3z" fill="currentColor"/>
+                    </svg>
+                    <h2>Print Request</h2>
+                </div>
+                <div class="print-dialog-actions">
+                    <button class="secondary-button cancel-print">Cancel</button>
+                    <button class="primary-button confirm-print">Print</button>
+                </div>
+            </header>
+            
+            <div class="print-dialog-body">
+                <div class="print-options-section">
+                    <div>
+                        <h3>Print Options</h3>
+                        <div class="print-option-group">
+                            <label class="print-option">
+                                <input type="radio" name="print-type" value="snapshot" checked>
+                                <div class="print-option-content">
+                                    <span class="print-option-title">Snapshot Report</span>
+                                    <span class="print-option-description">A condensed overview of key findings</span>
+                                </div>
+                            </label>
+                            <label class="print-option">
+                                <input type="radio" name="print-type" value="deep-dive">
+                                <div class="print-option-content">
+                                    <span class="print-option-title">Deep Dive Report</span>
+                                    <span class="print-option-description">Comprehensive analysis with details</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3>Layout</h3>
+                        <div class="print-option-group">
+                            <label class="print-option">
+                                <input type="radio" name="layout" value="portrait" checked>
+                                <div class="print-option-content">
+                                    <span class="print-option-title">Portrait</span>
+                                </div>
+                            </label>
+                            <label class="print-option">
+                                <input type="radio" name="layout" value="landscape">
+                                <div class="print-option-content">
+                                    <span class="print-option-title">Landscape</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="print-preview-section">
+                    <h3>Preview</h3>
+                    <div class="preview-container">
+                        <!-- Preview content will be dynamically inserted here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Download Research Dialog -->
+    <div class="download-dialog" id="researchDownloadPopup">
+        <div class="download-dialog-content">
+            <header class="download-dialog-header">
+                <div class="download-dialog-title">
+                    <svg viewBox="0 0 24 24" width="24" height="24">
+                        <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" fill="currentColor"/>
+                    </svg>
+                    <h2>Download Research Report</h2>
+                </div>
+                <button class="close-dialog">×</button>
+            </header>
+            <div class="download-dialog-body">
+                <p class="download-description">Choose the format for your research report download:</p>
+                <div class="download-options">
+                    <label class="download-option">
+                        <input type="radio" name="research-format" value="pdf" checked>
+                        <div class="download-option-content">
+                            <span class="download-option-title">PDF Document</span>
+                            <span class="download-option-description">Best for viewing and sharing</span>
+                        </div>
+                    </label>
+                    <label class="download-option">
+                        <input type="radio" name="research-format" value="excel">
+                        <div class="download-option-content">
+                            <span class="download-option-title">Excel Spreadsheet</span>
+                            <span class="download-option-description">Includes raw data and charts</span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+            <div class="download-dialog-footer">
+                <button class="secondary-button cancel-download">Cancel</button>
+                <button class="primary-button confirm-download">Download</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Download Due Diligence Dialog -->
+    <div class="download-dialog" id="dueDiligenceDownloadPopup">
+        <div class="download-dialog-content">
+            <header class="download-dialog-header">
+                <div class="download-dialog-title">
+                    <svg viewBox="0 0 24 24" width="24" height="24">
+                        <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" fill="currentColor"/>
+                    </svg>
+                    <h2>Download Due Diligence Report</h2>
+                </div>
+                <button class="close-dialog">×</button>
+            </header>
+            <div class="download-dialog-body">
+                <p class="download-description">Choose report format to download:</p>
+                <div class="download-options">
+                    <label class="download-option">
+                        <input type="radio" name="dd-format" value="snapshot" checked>
+                        <div class="download-option-content">
+                            <div class="download-option-header">
+                                <span class="download-option-title">Snapshot Report</span>
+                                <span class="download-option-info">
+                                    <svg viewBox="0 0 24 24" width="16" height="16">
+                                        <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" fill="currentColor"/>
+                                    </svg>
+                                    PDF • 2.1 MB
+                                </span>
+                            </div>
+                            <span class="download-option-description">A condensed overview with key findings and essential information for quick review</span>
+                        </div>
+                    </label>
+                    <label class="download-option">
+                        <input type="radio" name="dd-format" value="deep-dive">
+                        <div class="download-option-content">
+                            <div class="download-option-header">
+                                <span class="download-option-title">Deep Dive Report</span>
+                                <span class="download-option-info">
+                                    <svg viewBox="0 0 24 24" width="16" height="16">
+                                        <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" fill="currentColor"/>
+                                    </svg>
+                                    PDF • 8.4 MB
+                                </span>
+                            </div>
+                            <span class="download-option-description">Comprehensive analysis with detailed findings, supporting documentation, and full methodology</span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+            <div class="download-dialog-footer">
+                <button class="secondary-button cancel-download">Cancel</button>
+                <button class="primary-button confirm-download">Download</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

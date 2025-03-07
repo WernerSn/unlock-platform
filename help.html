@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Unlock Platform - Help Center</title>
+    <link rel="stylesheet" href="styles/dashboard.css">
+    <link rel="stylesheet" href="styles/menu.css">
+    <link rel="stylesheet" href="styles/shared.css">
+    <link rel="stylesheet" href="styles/help.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <div id="menu-container"></div>
+
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-menu-toggle" aria-label="Open menu">
+            <svg viewBox="0 0 24 24" width="24" height="24">
+                <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" fill="currentColor"/>
+            </svg>
+        </button>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu">
+            <div class="mobile-menu-header">
+                <img src="assets/unlock-logo.svg" alt="Unlock Logo" class="logo">
+                <button class="mobile-menu-close" aria-label="Close menu">
+                    <svg viewBox="0 0 24 24" width="24" height="24">
+                        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="currentColor"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <header class="persistent-header">
+            <div class="header-left">
+                <div class="breadcrumb">
+                    <a href="dashboard.html">Dashboard</a>
+                    <span class="separator">/</span>
+                    <span>Help Center</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <button class="notification-btn">
+                    <svg viewBox="0 0 24 24" width="24" height="24">
+                        <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z" fill="currentColor"/>
+                    </svg>
+                    <span class="notification-badge">2</span>
+                </button>
+                <div class="user-profile">
+                    <img src="https://ui-avatars.com/api/?name=Dave+Smith&background=0D8ABC&color=fff" alt="Dave Smith">
+                    <span>Dave Smith</span>
+                </div>
+                <button class="settings-btn" aria-label="Settings">
+                    <svg viewBox="0 0 24 24" width="24" height="24">
+                        <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" fill="currentColor"/>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        
+        <main class="main-content">
+            <div class="help-container">
+                <!-- Search Section -->
+                <div class="help-search-section">
+                    <h1>How can we help you today?</h1>
+                    <div class="search-box">
+                        <svg width="20" height="20" viewBox="0 0 24 24">
+                            <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="currentColor"/>
+                        </svg>
+                        <input type="text" placeholder="Search for help...">
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="quick-links">
+                    <div class="quick-link-card">
+                        <div class="quick-link-icon getting-started">
+                            <svg width="24" height="24" viewBox="0 0 24 24">
+                                <path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <h3>Getting Started</h3>
+                        <p>New to Unlock? Start here</p>
+                    </div>
+                    <div class="quick-link-card">
+                        <div class="quick-link-icon tutorials">
+                            <svg width="24" height="24" viewBox="0 0 24 24">
+                                <path d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14z" fill="currentColor"/>
+                                <path d="M10 8.5v7l5-3.5-5-3.5z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <h3>Video Tutorials</h3>
+                        <p>Learn through video guides</p>
+                    </div>
+                    <div class="quick-link-card">
+                        <div class="quick-link-icon api">
+                            <svg width="24" height="24" viewBox="0 0 24 24">
+                                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-5 14H4v-4h11v4zm0-5H4V9h11v4zm5 5h-4V9h4v9z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <h3>API Documentation</h3>
+                        <p>Technical guides & references</p>
+                    </div>
+                    <div class="quick-link-card">
+                        <div class="quick-link-icon contact">
+                            <svg width="24" height="24" viewBox="0 0 24 24">
+                                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10zm-8-7L4 6h16l-8 5z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <h3>Contact Support</h3>
+                        <p>Get help from our team</p>
+                    </div>
+                </div>
+
+                <!-- Popular FAQs -->
+                <div class="help-section">
+                    <h2>Frequently Asked Questions</h2>
+                    <div class="faq-grid">
+                        <div class="faq-category">
+                            <h3>Account & Billing</h3>
+                            <div class="faq-list">
+                                <details class="faq-item">
+                                    <summary>How do I change my subscription plan?</summary>
+                                    <div class="faq-content">
+                                        <p>You can change your subscription plan by going to Settings > Subscription. Choose your new plan and follow the prompts to complete the change.</p>
+                                    </div>
+                                </details>
+                                <details class="faq-item">
+                                    <summary>What payment methods do you accept?</summary>
+                                    <div class="faq-content">
+                                        <p>We accept all major credit cards (Visa, Mastercard, American Express) and PayPal. For enterprise customers, we also support wire transfers.</p>
+                                    </div>
+                                </details>
+                            </div>
+                        </div>
+                        <div class="faq-category">
+                            <h3>Features & Usage</h3>
+                            <div class="faq-list">
+                                <details class="faq-item">
+                                    <summary>How do I create custom reports?</summary>
+                                    <div class="faq-content">
+                                        <p>To create a custom report, navigate to the Reports section and click "New Report". You can then choose from various templates or start from scratch.</p>
+                                    </div>
+                                </details>
+                                <details class="faq-item">
+                                    <summary>Can I export my data?</summary>
+                                    <div class="faq-content">
+                                        <p>Yes, you can export your data in various formats including CSV, Excel, and PDF. Look for the export button in the top right of any report view.</p>
+                                    </div>
+                                </details>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="view-all-btn">View All FAQs</a>
+                </div>
+
+                <!-- Knowledge Base -->
+                <div class="help-section">
+                    <h2>Knowledge Base</h2>
+                    <div class="kb-grid">
+                        <div class="kb-article">
+                            <span class="article-category">Getting Started</span>
+                            <h3>Setting Up Your First Dashboard</h3>
+                            <p>Learn how to create and customize your first analytics dashboard...</p>
+                            <div class="article-meta">
+                                <span>5 min read</span>
+                                <a href="#">Read More →</a>
+                            </div>
+                        </div>
+                        <div class="kb-article">
+                            <span class="article-category">Advanced</span>
+                            <h3>Custom Report Formulas</h3>
+                            <p>Master the art of creating complex custom formulas for your reports...</p>
+                            <div class="article-meta">
+                                <span>8 min read</span>
+                                <a href="#">Read More →</a>
+                            </div>
+                        </div>
+                        <div class="kb-article">
+                            <span class="article-category">Integration</span>
+                            <h3>API Authentication Guide</h3>
+                            <p>Learn how to securely authenticate with our API endpoints...</p>
+                            <div class="article-meta">
+                                <span>6 min read</span>
+                                <a href="#">Read More →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Support -->
+                <div class="help-section">
+                    <h2>Still Need Help?</h2>
+                    <div class="support-options">
+                        <div class="support-card">
+                            <div class="support-icon email">
+                                <svg width="24" height="24" viewBox="0 0 24 24">
+                                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10zm-8-7L4 6h16l-8 5z" fill="currentColor"/>
+                                </svg>
+                            </div>
+                            <h3>Email Support</h3>
+                            <p>Get help within 24 hours</p>
+                            <a href="mailto:support@unlock-platform.com" class="support-btn">Send Email</a>
+                        </div>
+                        <div class="support-card">
+                            <div class="support-icon chat">
+                                <svg width="24" height="24" viewBox="0 0 24 24">
+                                    <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z" fill="currentColor"/>
+                                </svg>
+                            </div>
+                            <h3>Live Chat</h3>
+                            <p>Chat with us now</p>
+                            <button class="support-btn" onclick="openChat()">Start Chat</button>
+                        </div>
+                        <div class="support-card">
+                            <div class="support-icon phone">
+                                <svg width="24" height="24" viewBox="0 0 24 24">
+                                    <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z" fill="currentColor"/>
+                                </svg>
+                            </div>
+                            <h3>Phone Support</h3>
+                            <p>Talk to us directly</p>
+                            <a href="tel:+442012345678" class="support-btn">Call Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chatbot -->
+            <div class="chatbot" id="chatbot">
+                <div class="chatbot-header">
+                    <h3>AI Assistant</h3>
+                    <button class="close-chat" onclick="closeChat()">
+                        <svg width="20" height="20" viewBox="0 0 24 24">
+                            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="currentColor"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="chat-messages" id="chatMessages">
+                    <div class="message bot">
+                        <div class="message-content">
+                            <p>👋 Hi! I'm your AI assistant. How can I help you today?</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-input">
+                    <input type="text" placeholder="Type your message..." id="chatInput">
+                    <button class="send-message" onclick="sendMessage()">
+                        <svg width="20" height="20" viewBox="0 0 24 24">
+                            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" fill="currentColor"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        fetch('components/menu.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('menu-container').innerHTML = html;
+            });
+    </script>
+    <script src="scripts/menu.js"></script>
+    <script src="scripts/help.js"></script>
+</body>
+</html> 

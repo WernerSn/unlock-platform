@@ -1,0 +1,130 @@
+/* Shared Page Title Style */
+.page-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1F2937;
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+.page-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 40%;
+    height: 3px;
+    background: linear-gradient(to right, #0D8ABC, transparent);
+    border-radius: 2px;
+}
+
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    z-index: 1000;
+    display: none;
+    overflow-y: auto;  /* Allow scrolling if menu is long */
+}
+
+.mobile-menu.active {
+    display: block;
+}
+
+.mobile-menu-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #1e293b;
+    cursor: pointer;
+    padding: 8px;
+    z-index: 1000;
+}
+
+.mobile-nav {
+    padding: 64px 24px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Prevent body scroll when mobile menu is open */
+body.menu-open {
+    overflow: hidden;
+}
+
+/* Mobile Menu Styles */
+.menu-wrapper {
+    position: relative;
+    height: 100%;
+}
+
+.mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    padding: 8px;
+    color: #1e293b;
+    cursor: pointer;
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    z-index: 1001;
+}
+
+.mobile-divider {
+    height: 1px;
+    background: #e2e8f0;
+    margin: 8px 0;
+}
+
+@media (max-width: 768px) {
+    .mobile-menu-toggle {
+        display: block;
+    }
+
+    .sidebar {
+        display: none;
+    }
+
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .dashboard-container {
+        grid-template-columns: 1fr;
+    }
+
+    .menu-wrapper {
+        position: static;
+    }
+}
+
+.mobile-nav a {
+    color: #1e293b;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 12px 0;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.mobile-nav a.active {
+    color: #0D8ABC;
+    font-weight: 500;
+}
+
+.mobile-menu-header {
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e2e8f0;
+} 

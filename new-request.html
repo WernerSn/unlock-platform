@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Unlock Platform - New Request</title>
+    <link rel="stylesheet" href="styles/dashboard.css">
+    <link rel="stylesheet" href="styles/menu.css">
+    <link rel="stylesheet" href="styles/requests.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Use menu component -->
+        <div id="menu-container"></div>
+
+        <header class="persistent-header">
+            <div class="header-left">
+                <div class="breadcrumb">
+                    <a href="dashboard.html">Dashboard</a>
+                    <span class="separator">/</span>
+                    <a href="requests.html">Requests</a>
+                    <span class="separator">/</span>
+                    <span>New Request</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <button class="notification-btn">
+                    <svg viewBox="0 0 24 24" width="24" height="24">
+                        <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z" fill="currentColor"/>
+                    </svg>
+                    <span class="notification-badge">2</span>
+                </button>
+                <div class="user-profile">
+                    <img src="https://ui-avatars.com/api/?name=Dave+Smith&background=0D8ABC&color=fff" alt="Dave Smith">
+                    <span>Dave Smith</span>
+                </div>
+                <button class="settings-btn" aria-label="Settings">
+                    <svg viewBox="0 0 24 24" width="24" height="24">
+                        <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" fill="currentColor"/>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="request-container">
+                <div class="request-header">
+                    <h1>New Request</h1>
+                </div>
+
+                <div class="request-tabs">
+                    <button class="tab-btn active" data-tab="due-diligence">
+                        <svg viewBox="0 0 24 24" width="20" height="20">
+                            <path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z" fill="currentColor"/>
+                        </svg>
+                        Due Diligence
+                    </button>
+                    <button class="tab-btn" data-tab="research">Research Report</button>
+                </div>
+
+                <div class="tab-content">
+                    <div class="tab-pane active" id="due-diligence-form">
+                        <form class="request-form" id="dueDiligenceForm">
+                            <div class="form-group">
+                                <label for="company-name">Company name</label>
+                                <input type="text" id="company-name" name="company-name" placeholder="Name of target company">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="industry">Industry</label>
+                                <select id="industry" name="industry">
+                                    <option value="">Select industry</option>
+                                    <option value="technology">Technology</option>
+                                    <option value="finance">Finance</option>
+                                    <option value="healthcare">Healthcare</option>
+                                    <option value="retail">Retail</option>
+                                    <option value="manufacturing">Manufacturing</option>
+                                    <option value="energy">Energy</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="registration">Registration number</label>
+                                <input type="text" id="registration" name="registration" placeholder="Company's legal number">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="headquarters">Headquarters</label>
+                                <input type="text" id="headquarters" name="headquarters" placeholder="Country/State/City">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Areas of Interest</label>
+                                <div class="checkbox-grid">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="areas" value="finance">
+                                        Finance health
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="areas" value="management">
+                                        Management team
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="areas" value="compliance">
+                                        Compliance
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="areas" value="marketing">
+                                        Marketing & Brand
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="areas" value="risk">
+                                        Risk
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="areas" value="other">
+                                        Other
+                                    </label>
+                                </div>
+                                <textarea id="other-details" class="other-textarea" placeholder="Please specify other areas..."></textarea>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="submit" class="submit-btn">Submit request</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="tab-pane" id="research-form">
+                        <form class="request-form" id="researchForm">
+                            <div class="form-group">
+                                <label for="research-topic">Research Topic</label>
+                                <input type="text" id="research-topic" name="research-topic" placeholder="Main topic or question to be researched">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="research-objective">Research Objective</label>
+                                <textarea id="research-objective" name="research-objective" rows="3" placeholder="What specific questions need to be answered?"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="industry-focus">Industry Focus</label>
+                                <select id="industry-focus" name="industry-focus">
+                                    <option value="">Select industry</option>
+                                    <option value="technology">Technology</option>
+                                    <option value="finance">Finance</option>
+                                    <option value="healthcare">Healthcare</option>
+                                    <option value="retail">Retail</option>
+                                    <option value="manufacturing">Manufacturing</option>
+                                    <option value="energy">Energy</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Research Areas</label>
+                                <div class="checkbox-grid">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="research-areas" value="market-size">
+                                        Market Size & Growth
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="research-areas" value="competitors">
+                                        Competitor Analysis
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="research-areas" value="trends">
+                                        Industry Trends
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="research-areas" value="regulations">
+                                        Regulatory Environment
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="research-areas" value="technology">
+                                        Technology Landscape
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="research-areas" value="other">
+                                        Other
+                                    </label>
+                                </div>
+                                <textarea id="research-other-details" class="other-textarea" placeholder="Please specify other research areas..."></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="geographic-focus">Geographic Focus</label>
+                                <select id="geographic-focus" name="geographic-focus">
+                                    <option value="">Select region</option>
+                                    <option value="global">Global</option>
+                                    <option value="north-america">North America</option>
+                                    <option value="europe">Europe</option>
+                                    <option value="asia-pacific">Asia Pacific</option>
+                                    <option value="latin-america">Latin America</option>
+                                    <option value="middle-east">Middle East & Africa</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="time-period">Time Period</label>
+                                <select id="time-period" name="time-period">
+                                    <option value="">Select time frame</option>
+                                    <option value="current">Current State</option>
+                                    <option value="1-year">1 Year Forecast</option>
+                                    <option value="3-year">3 Year Forecast</option>
+                                    <option value="5-year">5 Year Forecast</option>
+                                    <option value="historical">Historical Analysis</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="additional-context">Additional Context</label>
+                                <textarea id="additional-context" name="additional-context" rows="4" placeholder="Any other relevant information or specific requirements..."></textarea>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="submit" class="submit-btn">Submit request</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="scripts/menu.js"></script>
+    <script>
+        // Load the menu component
+        fetch('components/menu.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('menu-container').innerHTML = html;
+            });
+    </script>
+    <script src="scripts/requests.js"></script>
+</body>
+</html> 

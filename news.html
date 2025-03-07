@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Unlock Platform - News</title>
+    <link rel="stylesheet" href="styles/dashboard.css">
+    <link rel="stylesheet" href="styles/menu.css">
+    <link rel="stylesheet" href="styles/shared.css">
+    <link rel="stylesheet" href="styles/news.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <div id="menu-container"></div>
+
+        <header class="persistent-header">
+            <div class="header-left">
+                <div class="breadcrumb">
+                    <a href="dashboard.html">Dashboard</a>
+                    <span class="separator">/</span>
+                    <span>News</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <button class="notification-btn">
+                    <svg viewBox="0 0 24 24" width="24" height="24">
+                        <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z" fill="currentColor"/>
+                    </svg>
+                    <span class="notification-badge">2</span>
+                </button>
+                <div class="user-profile">
+                    <img src="https://ui-avatars.com/api/?name=Dave+Smith&background=0D8ABC&color=fff" alt="Dave Smith">
+                    <span>Dave Smith</span>
+                </div>
+                <button class="settings-btn" aria-label="Settings">
+                    <svg viewBox="0 0 24 24" width="24" height="24">
+                        <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" fill="currentColor"/>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="settings-container">
+                <h1 class="page-title">Latest News</h1>
+
+                <!-- Featured News Item -->
+                <div class="featured-news">
+                    <div class="featured-content">
+                        <span class="news-tag">Featured</span>
+                        <h2>New Analytics Dashboard Released</h2>
+                        <p>We're excited to announce our latest analytics dashboard with improved visualization capabilities and real-time data processing.</p>
+                        <div class="news-meta">
+                            <span class="date">March 15, 2024</span>
+                            <a href="#" class="read-more">Read More →</a>
+                        </div>
+                    </div>
+                    <div class="featured-image">
+                        <img src="assets/news/analytics-dashboard.jpg" alt="New Analytics Dashboard">
+                    </div>
+                </div>
+
+                <!-- News Categories -->
+                <div class="news-filters">
+                    <button class="filter-btn active">All News</button>
+                    <button class="filter-btn">Product Updates</button>
+                    <button class="filter-btn">Company News</button>
+                    <button class="filter-btn">Industry Insights</button>
+                </div>
+
+                <!-- News Grid -->
+                <div class="news-grid">
+                    <!-- News Item -->
+                    <article class="news-card">
+                        <div class="news-image">
+                            <img src="assets/news/feature-update.jpg" alt="New Feature Update">
+                            <span class="category">Product Updates</span>
+                        </div>
+                        <div class="news-content">
+                            <span class="date">March 12, 2024</span>
+                            <h3>Enhanced Security Features</h3>
+                            <p>New security enhancements including two-factor authentication and improved encryption standards.</p>
+                            <a href="#" class="read-more">Read More →</a>
+                        </div>
+                    </article>
+
+                    <article class="news-card">
+                        <div class="news-image">
+                            <img src="assets/news/company-growth.jpg" alt="Company Growth">
+                            <span class="category">Company News</span>
+                        </div>
+                        <div class="news-content">
+                            <span class="date">March 10, 2024</span>
+                            <h3>Unlock Platform Expands to APAC</h3>
+                            <p>We're excited to announce our expansion into the Asia-Pacific market with a new office in Singapore.</p>
+                            <a href="#" class="read-more">Read More →</a>
+                        </div>
+                    </article>
+
+                    <article class="news-card">
+                        <div class="news-image">
+                            <img src="assets/news/industry-report.jpg" alt="Industry Report">
+                            <span class="category">Industry Insights</span>
+                        </div>
+                        <div class="news-content">
+                            <span class="date">March 8, 2024</span>
+                            <h3>2024 Data Analytics Trends</h3>
+                            <p>Our latest report reveals the top trends shaping the future of data analytics and business intelligence.</p>
+                            <a href="#" class="read-more">Read More →</a>
+                        </div>
+                    </article>
+
+                    <article class="news-card">
+                        <div class="news-image">
+                            <img src="assets/news/api-update.jpg" alt="API Updates">
+                            <span class="category">Product Updates</span>
+                        </div>
+                        <div class="news-content">
+                            <span class="date">March 5, 2024</span>
+                            <h3>New API Endpoints Released</h3>
+                            <p>Introducing new API endpoints for enhanced data integration and real-time analytics capabilities.</p>
+                            <a href="#" class="read-more">Read More →</a>
+                        </div>
+                    </article>
+
+                    <article class="news-card">
+                        <div class="news-image">
+                            <img src="assets/news/partnership.jpg" alt="Strategic Partnership">
+                            <span class="category">Company News</span>
+                        </div>
+                        <div class="news-content">
+                            <span class="date">March 3, 2024</span>
+                            <h3>Strategic Partnership Announcement</h3>
+                            <p>Unlock Platform partners with leading cloud provider to enhance data processing capabilities.</p>
+                            <a href="#" class="read-more">Read More →</a>
+                        </div>
+                    </article>
+
+                    <article class="news-card">
+                        <div class="news-image">
+                            <img src="assets/news/market-analysis.jpg" alt="Market Analysis">
+                            <span class="category">Industry Insights</span>
+                        </div>
+                        <div class="news-content">
+                            <span class="date">March 1, 2024</span>
+                            <h3>Market Analysis: AI in Enterprise</h3>
+                            <p>Deep dive into how artificial intelligence is transforming enterprise data management.</p>
+                            <a href="#" class="read-more">Read More →</a>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Newsletter Section -->
+                <div class="newsletter-section">
+                    <h2>Stay Updated</h2>
+                    <p>Subscribe to our newsletter for the latest updates and industry insights.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Enter your email">
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="scripts/menu.js"></script>
+    <script src="scripts/news.js"></script>
+    <script>
+        fetch('components/menu.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('menu-container').innerHTML = html;
+            });
+    </script>
+</body>
+</html>

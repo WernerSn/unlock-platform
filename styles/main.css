@@ -1,0 +1,810 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: #1B3A53;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    min-height: 100vh;
+}
+
+.sidebar {
+    background-color: #1a1a1a;
+    color: white;
+    padding: 20px;
+}
+
+.main-content {
+    padding: 30px;
+}
+
+.nav-item {
+    padding: 12px 16px;
+    margin: 4px 0;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+}
+
+.nav-item:hover {
+    background-color: #333;
+}
+
+.nav-item.active {
+    background-color: #444;
+}
+
+.screen {
+    display: none;
+}
+
+.screen.active {
+    display: block;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 24px;
+}
+
+.launch-container {
+    text-align: center;
+    z-index: 2;
+    position: relative;
+}
+
+.login-container {
+    text-align: center;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 40px;
+    border-radius: 12px;
+    min-width: 400px;
+}
+
+.logo img {
+    width: 180px;
+    margin-bottom: 40px;
+}
+
+.sign-in-form {
+    text-align: left;
+}
+
+h2 {
+    color: white;
+    margin-bottom: 24px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.form-group input {
+    width: 100%;
+    margin: 0;
+}
+
+label {
+    display: block;
+    color: white;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    color: white;
+    font-size: 16px;
+    box-sizing: border-box;
+    height: 44px;
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.password-input {
+    position: relative;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    opacity: 0.7;
+    padding: 0;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background: white;
+    color: #1B3A53;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.form-footer {
+    text-align: center;
+    margin-top: 24px;
+}
+
+.forgot-password {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.divider {
+    margin: 24px 0;
+    position: relative;
+    text-align: center;
+}
+
+.divider span {
+    color: white;
+    background: #1B3A53;
+    padding: 0 10px;
+    font-size: 14px;
+    position: relative;
+    z-index: 1;
+}
+
+.divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.social-login {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+
+.social-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.social-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.register-link {
+    color: white;
+    font-size: 14px;
+}
+
+.register-link a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.geometric-pattern {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 40vh;
+    background-image: url('../assets/geometric-pattern.svg');
+    background-repeat: repeat-x;
+    background-position: bottom center;
+    background-size: auto 100%;
+    opacity: 0.15;
+    z-index: 1;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.auth-btn {
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.auth-btn:hover {
+    background: white;
+    color: #1B3A53;
+}
+
+/* Social Auth Containers */
+.social-auth-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.social-auth-content {
+    background: white;
+    border-radius: 8px;
+    padding: 24px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.social-auth-header {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.social-auth-header h2 {
+    color: #333;
+    margin-top: 16px;
+}
+
+.social-brand-icon {
+    width: 40px;
+    height: 40px;
+}
+
+/* Google Specific Styles */
+.google-account-picker {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.google-account {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.google-account:hover {
+    background-color: #f5f5f5;
+}
+
+.account-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-right: 12px;
+}
+
+.account-info {
+    flex: 1;
+}
+
+.account-name {
+    font-weight: 500;
+    color: #333;
+}
+
+.account-email {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Facebook Specific Styles */
+.facebook-login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.facebook-login-form input {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.facebook-login-btn {
+    background: #1877f2;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.create-account-btn {
+    background: #42b72a;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+/* Twitter Specific Styles */
+.twitter-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.twitter-google-btn,
+.twitter-apple-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    background: white;
+    cursor: pointer;
+}
+
+.twitter-next-btn {
+    background: #000;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    width: 100%;
+}
+
+.twitter-forgot-btn {
+    background: none;
+    border: none;
+    color: #1da1f2;
+    cursor: pointer;
+}
+
+/* When visible, social auth containers should use flex */
+.social-auth-container:not(.hidden) {
+    display: flex;
+}
+
+/* Sign up specific styles */
+.signup-container {
+    text-align: left;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 24px;
+    border-radius: 12px;
+    width: 460px;
+}
+
+.signup-container .logo {
+    text-align: center;
+}
+
+.signup-container .logo img {
+    width: 120px;
+    margin-bottom: 16px;
+}
+
+.signup-container h2 {
+    text-align: center;
+    margin-bottom: 16px;
+    font-size: 20px;
+}
+
+.account-type {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.radio-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.radio-container input[type="radio"] {
+    width: auto;
+    margin: 0;
+}
+
+.radio-label {
+    margin: 0;
+}
+
+.form-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+    position: relative;
+}
+
+.form-row .form-group {
+    flex: 1;
+    margin-bottom: 0;
+    position: relative;
+}
+
+.signup-container .form-group {
+    margin-bottom: 16px;
+    position: relative;
+}
+
+.signup-container label {
+    display: block;
+    color: white;
+    margin-bottom: 4px;
+    font-size: 13px;
+    text-align: left;
+}
+
+.signup-container input {
+    width: 100%;
+    padding: 8px 12px;
+    font-size: 14px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    color: white;
+    box-sizing: border-box;
+}
+
+.terms {
+    margin: 16px 0;
+    clear: both;
+}
+
+.signup-container .submit-btn {
+    width: 50%;
+    margin: 4px auto 0;
+    display: block;
+    background: white;
+    color: #1B3A53;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.validation-check {
+    position: absolute;
+    right: -24px;
+    top: 12px;
+    color: #4CAF50;
+    line-height: 1;
+}
+
+.signup-container .toggle-password {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: white;
+    opacity: 0.7;
+    cursor: pointer;
+    padding: 0;
+}
+
+/* Update checkbox container styles */
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: white;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.checkbox-container input[type="checkbox"] {
+    margin: 0;
+    width: auto;
+}
+
+/* Add this to ensure the text stays on the same line */
+.checkbox-container span {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Onboarding styles */
+.onboarding-container {
+    text-align: center;
+    z-index: 2;
+    color: white;
+    max-width: 460px;
+}
+
+.onboarding-progress {
+    margin-bottom: 60px;
+}
+
+.step-indicator {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 4px;
+    margin-bottom: 12px;
+}
+
+.step-number {
+    font-size: 48px;
+    font-weight: 300;
+    line-height: 1;
+}
+
+.step-label {
+    text-transform: uppercase;
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+.step-total {
+    font-size: 24px;
+    opacity: 0.7;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 1px;
+}
+
+.progress {
+    height: 100%;
+    background: white;
+    border-radius: 1px;
+    transition: width 0.3s ease;
+}
+
+.onboarding-content {
+    text-align: center;
+}
+
+.onboarding-content h2 {
+    font-size: 32px;
+    margin-bottom: 16px;
+    font-weight: 400;
+}
+
+.onboarding-description {
+    font-size: 16px;
+    opacity: 0.8;
+    line-height: 1.5;
+    margin-bottom: 40px;
+}
+
+.onboarding-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+}
+
+.primary-btn {
+    background: white;
+    color: #1B3A53;
+    border: none;
+    padding: 12px 48px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.primary-btn:hover {
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.text-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.text-btn:hover {
+    opacity: 1;
+}
+
+/* Onboarding question styles */
+.onboarding-question {
+    text-align: center;
+    z-index: 2;
+    color: white;
+    max-width: 600px;
+    width: 100%;
+}
+
+.option-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin: 32px 0;
+}
+
+.option-card {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 24px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: white;
+}
+
+.option-card:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.option-card.selected {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: white;
+}
+
+.option-card.selected .option-icon svg {
+    opacity: 1;
+}
+
+.option-icon {
+    margin-bottom: 16px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.option-icon svg {
+    width: 32px;
+    height: 32px;
+    color: white;
+    opacity: 0.9;
+}
+
+.option-card h3 {
+    margin: 0 0 8px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.option-card p {
+    margin: 0;
+    font-size: 14px;
+    opacity: 0.8;
+    line-height: 1.4;
+}
+
+.onboarding-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 32px;
+}
+
+/* Update progress bar for smooth transitions */
+.progress {
+    transition: width 0.5s ease;
+}
+
+/* Completion screen styles */
+.onboarding-completion {
+    text-align: center;
+    z-index: 2;
+    color: white;
+    max-width: 460px;
+}
+
+.completion-icon {
+    margin: 0 auto 24px;
+    width: 64px;
+    height: 64px;
+    color: #4CAF50;
+    animation: scaleIn 0.5s ease;
+}
+
+.completion-message {
+    font-size: 16px;
+    line-height: 1.5;
+    opacity: 0.8;
+    margin: 16px 0 32px;
+}
+
+.completion-actions {
+    margin-top: 32px;
+}
+
+.completion-actions .primary-btn {
+    padding: 14px 48px;
+    font-size: 16px;
+}
+
+@keyframes scaleIn {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.platform-message {
+    color: #64748b;
+    font-size: 14px;
+    text-align: center;
+    margin-top: 16px;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+}

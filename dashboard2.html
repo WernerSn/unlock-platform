@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Unlock Platform - Investor Dashboard</title>
+    <link rel="stylesheet" href="styles/dashboard2.css">
+    <link rel="stylesheet" href="styles/menu.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <div id="menu-container"></div>
+
+        <main class="main-content">
+            <header class="dashboard-header">
+                <div class="header-left">
+                    <h1>Welcome back, Dave</h1>
+                    <p class="subtitle">Here's what's happening with your due diligence requests</p>
+                </div>
+                <div class="header-actions">
+                    <button class="quick-action-btn">
+                        <svg viewBox="0 0 24 24" width="20" height="20">
+                            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="currentColor"/>
+                        </svg>
+                        New Request
+                    </button>
+                </div>
+            </header>
+
+            <div class="dashboard-grid">
+                <!-- Activity Overview Card -->
+                <div class="dashboard-card activity-overview">
+                    <h3>Activity Overview</h3>
+                    <div class="metrics-grid">
+                        <div class="metric-item">
+                            <span class="metric-value">12</span>
+                            <span class="metric-label">Active Requests</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-value">8</span>
+                            <span class="metric-label">Reports Ready</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-value">3</span>
+                            <span class="metric-label">High Risk Alerts</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-value">5</span>
+                            <span class="metric-label">Pending Reviews</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Risk Alerts Card -->
+                <div class="dashboard-card risk-alerts">
+                    <div class="card-header">
+                        <h3>Risk Alerts</h3>
+                        <button class="view-all-btn">View All</button>
+                    </div>
+                    <div class="alerts-list">
+                        <div class="alert-item high">
+                            <div class="alert-icon">⚠️</div>
+                            <div class="alert-content">
+                                <h4>TechCorp Solutions</h4>
+                                <p>Significant discrepancy in financial statements</p>
+                            </div>
+                            <button class="alert-action">Review</button>
+                        </div>
+                        <div class="alert-item medium">
+                            <div class="alert-icon">⚠️</div>
+                            <div class="alert-content">
+                                <h4>HealthCare Plus</h4>
+                                <p>Pending regulatory compliance verification</p>
+                            </div>
+                            <button class="alert-action">Review</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Reports Card -->
+                <div class="dashboard-card recent-reports">
+                    <div class="card-header">
+                        <h3>Recent Reports</h3>
+                        <button class="view-all-btn">View All</button>
+                    </div>
+                    <div class="reports-list">
+                        <div class="report-item">
+                            <div class="report-icon">📄</div>
+                            <div class="report-content">
+                                <div class="report-header">
+                                    <h4>FinServ Global</h4>
+                                    <span class="report-type">Due Diligence</span>
+                                </div>
+                                <div class="report-meta">
+                                    <span class="report-date">Mar 15, 2024</span>
+                                    <span class="report-status completed">Completed</span>
+                                </div>
+                            </div>
+                            <button class="download-btn">
+                                <svg viewBox="0 0 24 24" width="20" height="20">
+                                    <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" fill="currentColor"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <!-- More report items... -->
+                    </div>
+                </div>
+
+                <!-- Industry Insights Card -->
+                <div class="dashboard-card industry-insights">
+                    <div class="card-header">
+                        <h3>Industry Insights</h3>
+                        <button class="view-all-btn">View All</button>
+                    </div>
+                    <div class="insights-grid">
+                        <div class="insight-card">
+                            <div class="insight-header">
+                                <span class="insight-tag">Technology</span>
+                                <span class="insight-date">2 hours ago</span>
+                            </div>
+                            <h4>AI Regulation Impact Analysis</h4>
+                            <p>New regulatory frameworks affecting AI startups and investment opportunities.</p>
+                            <button class="read-more-btn">Read Analysis</button>
+                        </div>
+                        <div class="insight-card">
+                            <div class="insight-header">
+                                <span class="insight-tag">Healthcare</span>
+                                <span class="insight-date">1 day ago</span>
+                            </div>
+                            <h4>Biotech Market Trends</h4>
+                            <p>Emerging opportunities in precision medicine and digital health solutions.</p>
+                            <button class="read-more-btn">Read Analysis</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Overview Card -->
+                <div class="dashboard-card portfolio-overview">
+                    <h3>Portfolio Risk Overview</h3>
+                    <div class="risk-distribution">
+                        <div class="risk-bar">
+                            <div class="risk-segment low" style="width: 45%">
+                                <span>Low Risk (45%)</span>
+                            </div>
+                            <div class="risk-segment medium" style="width: 35%">
+                                <span>Medium Risk (35%)</span>
+                            </div>
+                            <div class="risk-segment high" style="width: 20%">
+                                <span>High Risk (20%)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="scripts/menu.js" type="module"></script>
+</body>
+</html> 

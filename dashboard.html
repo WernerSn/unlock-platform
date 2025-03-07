@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Unlock Platform - Dashboard</title>
+    <link rel="stylesheet" href="styles/dashboard.css">
+    <link rel="stylesheet" href="styles/menu.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <div id="menu-container"></div>
+
+        <!-- Persistent Header -->
+        <header class="persistent-header">
+            <div class="header-left">
+                <div class="breadcrumb">
+                    <a href="dashboard.html">Dashboard</a>
+                    <span class="separator">/</span>
+                    <span>Overview</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <button class="notification-btn">
+                    <svg viewBox="0 0 24 24" width="24" height="24">
+                        <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z" fill="currentColor"/>
+                    </svg>
+                    <span class="notification-badge">2</span>
+                </button>
+                <div class="user-profile">
+                    <img src="https://ui-avatars.com/api/?name=Dave+Smith&background=0D8ABC&color=fff" alt="Dave Smith">
+                    <span>Dave Smith</span>
+                </div>
+                <button class="settings-btn" aria-label="Settings">
+                    <svg viewBox="0 0 24 24" width="24" height="24">
+                        <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" fill="currentColor"/>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="dashboard-content">
+                <!-- Top row -->
+                <section class="reports-section">
+                    <div class="section-header">
+                        <h2>Reports</h2>
+                        <div class="header-actions">
+                            <button class="sort-btn">
+                                <svg viewBox="0 0 24 24" width="18" height="18">
+                                    <path d="M3 18h6v-2H3v2zM3 6v2h18V6H3zm0 7h12v-2H3v2z" fill="currentColor"/>
+                                </svg>
+                                Sort by
+                            </button>
+                        </div>
+                    </div>
+                    <div class="reports-overview">
+                        <div class="progress-ring">
+                            <svg width="120" height="120" viewBox="0 0 120 120">
+                                <circle class="progress-ring-circle-bg" cx="60" cy="60" r="54" />
+                                <circle class="progress-ring-circle" cx="60" cy="60" r="54" 
+                                    stroke-dasharray="339.292" 
+                                    stroke-dashoffset="84.823" /> <!-- 25% complete -->
+                            </svg>
+                            <div class="progress-content">
+                                <br>
+                                <span class="progress-number">&nbsp;&nbsp;&nbsp;4/6</span>
+                                <span class="progress-label">&nbsp;&nbsp;&nbsp;&nbsp;Reports Used</span>
+                            </div>
+                        </div>
+                        <div class="reports-stats">
+                            <div class="report-stat">
+                                <div class="stat-header">
+                                    <svg viewBox="0 0 24 24" width="20" height="20">
+                                        <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6z" fill="currentColor"/>
+                                    </svg>
+                                    <span>New Reports</span>
+                                </div>
+                                <span class="stat-value">3</span>
+                            </div>
+                            <div class="report-stat">
+                                <div class="stat-header">
+                                    <svg viewBox="0 0 24 24" width="20" height="20">
+                                        <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5z" fill="currentColor"/>
+                                    </svg>
+                                    <span>Under Review</span>
+                                </div>
+                                <span class="stat-value">1</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="recent-reports">
+                        <br>
+                        <h3>Recent Reports</h3>
+                        <div class="reports-list">
+                            <div class="report-item">
+                                <div class="report-icon">📄</div>
+                                <div class="report-info">
+                                    <h4>Elite Wine & Whisky</h4>
+                                    <div class="report-meta">
+                                        <span class="report-type">Due Diligence</span>
+                                        <span class="report-date">Mar 18, 2024</span>
+                                    </div>
+                                </div>
+                                <button class="download-btn" title="Download Report">
+                                    <svg viewBox="0 0 24 24" width="20" height="20">
+                                        <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" fill="currentColor"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="due-diligence-section">
+                    <div class="section-header">
+                        <h2>Active Requests</h2>
+                        <div class="header-actions">
+                            <button class="filter-btn">
+                                <svg viewBox="0 0 24 24" width="18" height="18">
+                                    <path d="M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z" fill="currentColor"/>
+                                </svg>
+                                Filter
+                            </button>
+                            <button class="new-request-btn">
+                                <a href="requests.html#research-requests" class="new-request-link">
+                                    <svg viewBox="0 0 24 24" width="18" height="18">
+                                        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="currentColor"/>
+                                    </svg>
+                                    New Request
+                                </a>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="requests-stats">
+                        <div class="stat-item">
+                            <span class="stat-value">5</span>
+                            <span class="stat-label">Total Active</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">2</span>
+                            <span class="stat-label">Due Diligence</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">3</span>
+                            <span class="stat-label">Research</span>
+                        </div>
+                    </div>
+                    <div class="requests-list">
+                        <div class="request-item">
+                            <div class="request-info">
+                                <div class="company-info">
+                                    <span class="company-name">The Fine Art Group</span>
+                                    <span class="request-type">Due Diligence</span>
+                                </div>
+                                <div class="request-meta">
+                                    <span class="request-date">Submitted: Mar 15, 2024</span>
+                                    <span class="request-id">#REQ-001</span>
+                                </div>
+                            </div>
+                            <div class="request-status">
+                                <span class="status-badge processing">processing</span>
+                                <button class="action-btn" title="View details">
+                                    <svg viewBox="0 0 24 24" width="20" height="20">
+                                        <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z" fill="currentColor"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="request-item">
+                            <div class="request-info">
+                                <div class="company-info">
+                                    <span class="company-name">Cru Wine</span>
+                                    <span class="request-type">Research</span>
+                                </div>
+                                <div class="request-meta">
+                                    <span class="request-date">Submitted: Feb 20, 2024</span>
+                                    <span class="request-id">#REQ-002</span>
+                                </div>
+                            </div>
+                            <div class="request-status">
+                                <span class="status-badge pending">pending</span>
+                                <button class="action-btn" title="View details">
+                                    <svg viewBox="0 0 24 24" width="20" height="20">
+                                        <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z" fill="currentColor"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        
+                    </div>
+                   
+                </section>
+
+                <section class="notifications-section">
+                    <div class="section-header">
+                        <h2>Notifications & Alerts</h2>
+                        <button class="mark-all-read">Mark all as read</button>
+                    </div>
+                    <div class="notifications-list">
+                        <div class="notification-item urgent">
+                            <div class="notification-icon">
+                                <svg viewBox="0 0 24 24" width="24" height="24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h2v-2h-2v2zm0-4h2V7h-2v6z" fill="currentColor"/>
+                                </svg>
+                            </div>
+                            <div class="notification-content">
+                                <h4>Risk Alert: The Fine Art Group</h4>
+                                <p>New compliance issues identified requiring immediate attention</p>
+                                <span class="notification-time">2 hours ago</span>
+                            </div>
+                        </div>
+                        <div class="notification-item">
+                            <div class="notification-icon">
+                                <svg viewBox="0 0 24 24" width="24" height="24">
+                                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" fill="currentColor"/>
+                                </svg>
+                            </div>
+                            <div class="notification-content">
+                                <h4>Report Ready</h4>
+                                <p>Your due diligence report for Cru Wine is now available</p>
+                                <span class="notification-time">1 day ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Middle row (Carousel) -->
+                <section class="available-reports">
+                    <div class="section-header">
+                        <h2>Available reports</h2>
+                        <a href="reports.html" class="view-all">
+                            View all
+                            <svg viewBox="0 0 24 24" width="20" height="20">
+                                <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z" fill="currentColor"/>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="reports-grid">
+                        <!-- Elite Wine & Whisky -->
+                        <div class="report-card">
+                            <img src="assets/report1.jpg" alt="Elite Wine & Whisky Ltd">
+                            <div class="report-info">
+                                <h3>Elite Wine & Whisky Ltd</h3>
+                                <p>One of London's only cask trading companies with our own bonded warehouse, which allows us to offer full cask ownership to our clients.</p>
+                            </div>
+                            <div class="report-meta">
+                                <div class="status positive">
+                                    <svg viewBox="0 0 24 24" width="16" height="16">
+                                        <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z" fill="currentColor"/>
+                                    </svg>
+                                    Positive unlock
+                                </div>
+                                <div class="date">10 Nov 2024</div>
+                            </div>
+                        </div>
+
+                        <!-- Maddox Gallery -->
+                        <div class="report-card">
+                            <img src="assets/report2.jpg" alt="Maddox Gallery">
+                            <div class="report-info">
+                                <h3>Maddox Gallery</h3>
+                                <p>A leading pioneer within the art world, Maddox boasts exhibition spaces for emerging, established, and blue-chip artists.</p>
+                            </div>
+                            <div class="report-meta">
+                                <div class="status neutral">
+                                    <svg viewBox="0 0 24 24" width="16" height="16">
+                                        <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z" fill="currentColor"/>
+                                    </svg>
+                                    Caution advised
+                                </div>
+                                <div class="date">15 Dec 2024</div>
+                            </div>
+                        </div>
+
+                        <!-- Rally -->
+                        <div class="report-card">
+                            <img src="assets/report3.jpg" alt="Rally">
+                            <div class="report-info">
+                                <h3>Rally</h3>
+                                <p>Together, we rally to make investing behind ideas, emotions, and communities safe, easy, and accessible.</p>
+                            </div>
+                            <div class="report-meta">
+                                <div class="status negative">
+                                    <svg viewBox="0 0 24 24" width="16" height="16">
+                                        <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z" fill="currentColor"/>
+                                    </svg>
+                                    Not recommended
+                                </div>
+                                <div class="date">18 Dec 2024</div>
+                            </div>
+                        </div>
+
+                        <!-- Sotheby's Wine -->
+                        <div class="report-card">
+                            <img src="assets/report4.jpg" alt="Sotheby's Wine">
+                            <div class="report-info">
+                                <h3>Sotheby's Wine</h3>
+                                <p>Sotheby's is a global leader in the art world, with a long-standing reputation for excellence and innovation.</p>
+                            </div>
+                            <div class="report-meta">
+                                <div class="status positive">
+                                    <svg viewBox="0 0 24 24" width="16" height="16">
+                                        <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z" fill="currentColor"/>
+                                    </svg>
+                                    Positive unlock
+                                </div>
+                                <div class="date">20 Dec 2024</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Bottom row -->
+                <section class="research-reports">
+                    <div class="section-header">
+                        <h2>Research reports</h2>
+                        <div class="header-actions">
+                            <span class="reports-count">12 reports available</span>
+                            <button class="view-all">
+                                <svg viewBox="0 0 24 24" width="20" height="20">
+                                    <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z" fill="currentColor"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="reports-list">
+                        <!-- Fine Art Market Report -->
+                        <div class="report-row">
+                            <div class="report-title">
+                                <div class="report-info">
+                                    <span class="report-name">Fine art market trends</span>
+                                    <span class="report-desc">Global analysis and investment outlook</span>
+                                </div>
+                                <div class="report-meta">
+                                    <span class="report-type">Market Analysis</span>
+                                    <span class="date">10 Nov 2024</span>
+                                </div>
+                            </div>
+                            <div class="report-actions">
+                                <button class="action-btn" title="View report">
+                                    <svg viewBox="0 0 24 24" width="20" height="20">
+                                        <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z" fill="currentColor"/>
+                                    </svg>
+                                </button>
+                                <button class="action-btn" title="Download report">
+                                    <svg viewBox="0 0 24 24" width="20" height="20">
+                                        <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" fill="currentColor"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Wine Investment Report -->
+                        <div class="report-row">
+                            <div class="report-title">
+                                <div class="report-info">
+                                    <span class="report-name">Wine Investment Quarterly Review</span>
+                                    <span class="report-desc">Performance analysis of fine wine markets</span>
+                                </div>
+                                <div class="report-meta">
+                                    <span class="report-type">Market Review</span>
+                                    <span class="date">5 Nov 2024</span>
+                                </div>
+                            </div>
+                            <div class="report-actions">
+                                <button class="action-btn" title="View report">
+                                    <svg viewBox="0 0 24 24" width="20" height="20">
+                                        <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z" fill="currentColor"/>
+                                    </svg>
+                                </button>
+                                <button class="action-btn" title="Download report">
+                                    <svg viewBox="0 0 24 24" width="20" height="20">
+                                        <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" fill="currentColor"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Luxury Watch Market Report -->
+                        <div class="report-row">
+                            <div class="report-title">
+                                <div class="report-info">
+                                    <span class="report-name">Luxury Watch Market Insights</span>
+                                    <span class="report-desc">Emerging trends and investment opportunities</span>
+                                </div>
+                                <div class="report-meta">
+                                    <span class="report-type">Industry Analysis</span>
+                                    <span class="date">1 Nov 2024</span>
+                                </div>
+                            </div>
+                            <div class="report-actions">
+                                <button class="action-btn" title="View report">
+                                    <svg viewBox="0 0 24 24" width="20" height="20">
+                                        <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z" fill="currentColor"/>
+                                    </svg>
+                                </button>
+                                <button class="action-btn" title="Download report">
+                                    <svg viewBox="0 0 24 24" width="20" height="20">
+                                        <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" fill="currentColor"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="new-request.html#research-requests" class="primary-button">
+                        <svg viewBox="0 0 24 24" width="20" height="20">
+                            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="currentColor"/>
+                        </svg>
+                        <span>Request a new report</span>
+                    </a>
+                </section>
+
+                <section class="general-reports">
+                    <div class="section-header">
+                        <h2>General reports & News</h2>
+                        <div class="header-actions">
+                            <button class="view-all" title="View all reports">
+                                <svg viewBox="0 0 24 24" width="20" height="20">
+                                    <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z" fill="currentColor"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="news-list">
+                        <!-- Real Estate Report -->
+                        <div class="news-item">
+                            <div class="news-content">
+                                <div class="news-info">
+                                    <h3>Real Estate Market Trends</h3>
+                                    <p>Global real estate investment opportunities and market analysis</p>
+                                </div>
+                                <div class="news-meta">
+                                    <span class="news-type">Market Analysis</span>
+                                    <span class="date">10 Nov 2024</span>
+                                </div>
+                            </div>
+                            <div class="news-actions">
+                                <button class="action-btn" title="View report">
+                                    <svg viewBox="0 0 24 24" width="20" height="20">
+                                        <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z" fill="currentColor"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Art Market News -->
+                        <div class="news-item">
+                            <div class="news-content">
+                                <div class="news-info">
+                                    <h3>Contemporary Art Market Update</h3>
+                                    <p>Latest trends and developments in the contemporary art scene</p>
+                                </div>
+                                <div class="news-meta">
+                                    <span class="news-type">Market Update</span>
+                                    <span class="date">8 Nov 2024</span>
+                                </div>
+                            </div>
+                            <div class="news-actions">
+                                <button class="action-btn" title="View report">
+                                    <svg viewBox="0 0 24 24" width="20" height="20">
+                                        <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z" fill="currentColor"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Luxury Market News -->
+                        <div class="news-item">
+                            <div class="news-content">
+                                <div class="news-info">
+                                    <h3>Luxury Market Resilience Report</h3>
+                                    <p>Analysis of luxury goods performance across global markets</p>
+                                </div>
+                                <div class="news-meta">
+                                    <span class="news-type">Industry Report</span>
+                                    <span class="date">7 Nov 2024</span>
+                                </div>
+                            </div>
+                            <div class="news-actions">
+                                <button class="action-btn" title="View report">
+                                    <svg viewBox="0 0 24 24" width="20" height="20">
+                                        <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z" fill="currentColor"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Investment Trends -->
+                        <div class="news-item">
+                            <div class="news-content">
+                                <div class="news-info">
+                                    <h3>Alternative Investment Trends 2024</h3>
+                                    <p>Key insights into emerging alternative investment opportunities</p>
+                                </div>
+                                <div class="news-meta">
+                                    <span class="news-type">Market Insight</span>
+                                    <span class="date">5 Nov 2024</span>
+                                </div>
+                            </div>
+                            <div class="news-actions">
+                                <button class="action-btn" title="View report">
+                                    <svg viewBox="0 0 24 24" width="20" height="20">
+                                        <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z" fill="currentColor"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="reports.html" class="primary-button">
+                        <span>View all reports & news</span>
+                        <svg viewBox="0 0 24 24" width="20" height="20">
+                            <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z" fill="currentColor"/>
+                        </svg>
+                    </a>
+                </section>
+
+                <section class="subscription-overview">
+                    <div class="section-header">
+                        <h2>Subscription Overview</h2>
+                    </div>
+                    
+                    <div class="subscription-plan">
+                        <div class="plan-name">Premium</div>
+                        <div class="plan-price">
+                            <span class="price-amount">$199</span>
+                            <span class="price-period">/month</span>
+                        </div>
+                        <div class="next-payment">
+                            <svg viewBox="0 0 24 24" width="16" height="16">
+                                <path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z" fill="currentColor"/>
+                            </svg>
+                            Next payment: February 28, 2025
+                        </div>
+                    </div>
+
+                    <div class="usage-stats">
+                        <div class="usage-item">
+                            <div class="usage-label">Due Diligence Reports</div>
+                            <div class="usage-value">
+                                3 <span class="usage-limit">of 4</span>
+                            </div>
+                        </div>
+                        <div class="usage-item">
+                            <div class="usage-label">Research Reports</div>
+                            <div class="usage-value">
+                                3 <span class="usage-limit">of 6</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="active-requests">
+                        <div class="requests-icon">
+                            <svg viewBox="0 0 24 24" width="20" height="20">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <div class="requests-info">
+                            <div class="requests-label">Active Requests</div>
+                            <div class="requests-value">No active requests</div>
+                        </div>
+                    </div>
+
+                    <a href="settings.html#subscription-section" class="primary-button">
+                        <svg viewBox="0 0 24 24" width="20" height="20">
+                            <path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zm-7.43 2.52c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z" fill="currentColor"/>
+                        </svg>
+                        Manage Subscription
+                    </a>
+                </section>
+            </div>
+        </main>
+    </div>
+    <div class="mobile-menu">
+        <button class="mobile-menu-close" aria-label="Close menu">✕</button>
+        <nav class="mobile-nav">
+            <a href="dashboard.html" class="active">Dashboard</a>
+            <a href="requests.html">Requests</a>
+            <a href="reports.html">Reports</a>
+            <a href="support.html">Support</a>
+            <a href="settings.html">Settings</a>
+        </nav>
+    </div>
+    <script src="scripts/menu.js"></script>
+    <script>
+        fetch('components/menu.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('menu-container').innerHTML = html;
+            });
+    </script>
+    <script src="scripts/dashboard.js"></script>
+
+    <!-- Download Popup -->
+    <div class="download-popup hidden">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h3>Download Report</h3>
+                <button class="close-popup">✕</button>
+            </div>
+            <div class="popup-body">
+                <div class="download-options">
+                    <button class="download-option">
+                        <svg viewBox="0 0 24 24" width="24" height="24">
+                            <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z" fill="currentColor"/>
+                        </svg>
+                        <span>Full Report (PDF)</span>
+                    </button>
+                    <button class="download-option">
+                        <svg viewBox="0 0 24 24" width="24" height="24">
+                            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z" fill="currentColor"/>
+                        </svg>
+                        <span>Executive Summary</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Unlock Platform - Research Request</title>
+    <link rel="stylesheet" href="styles/dashboard.css">
+    <link rel="stylesheet" href="styles/requests.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <button class="mobile-menu-toggle">
+                    <svg viewBox="0 0 24 24" width="24" height="24">
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" fill="currentColor"/>
+                    </svg>
+                </button>
+                <div class="logo">
+                    <img src="assets/unlock-logo2.svg" alt="Unlock Logo">
+                </div>
+            </div>
+            <nav class="nav-menu">
+                <a href="dashboard.html" class="nav-item">
+                    <svg viewBox="0 0 24 24" width="20" height="20">
+                        <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z" fill="currentColor"/>
+                    </svg>
+                    Dashboard
+                </a>
+                <a href="requests.html" class="nav-item active">
+                    <svg viewBox="0 0 24 24" width="20" height="20">
+                        <path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm-2 14l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z" fill="currentColor"/>
+                    </svg>
+                    Requests
+                </a>
+                <!-- Rest of sidebar navigation -->
+            </nav>
+        </aside>
+
+        <header class="persistent-header">
+            <div class="header-left">
+                <div class="breadcrumb">
+                    <a href="/dashboard">Dashboard</a>
+                    <span class="separator">/</span>
+                    <a href="/requests">Requests</a>
+                    <span class="separator">/</span>
+                    <span>Research Request</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <button class="notification-btn">
+                    <svg viewBox="0 0 24 24" width="24" height="24">
+                        <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z" fill="currentColor"/>
+                    </svg>
+                    <span class="notification-badge">2</span>
+                </button>
+                <div class="user-profile">
+                    <img src="https://ui-avatars.com/api/?name=Dave+Smith&background=0D8ABC&color=fff" alt="Dave Smith">
+                    <span>Dave Smith</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="request-form-container">
+                <form class="request-form" id="researchFormElement">
+                    <div class="form-group">
+                        <label for="research-topic">Research Topic</label>
+                        <input type="text" id="research-topic" name="research-topic" placeholder="Main topic or question to be researched">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="research-objective">Research Objective</label>
+                        <textarea id="research-objective" name="research-objective" rows="3" placeholder="What specific questions need to be answered?"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="industry-focus">Industry Focus</label>
+                        <select id="industry-focus" name="industry-focus">
+                            <option value="">Select industry</option>
+                            <option value="technology">Technology</option>
+                            <option value="finance">Finance</option>
+                            <option value="healthcare">Healthcare</option>
+                            <option value="retail">Retail</option>
+                            <option value="manufacturing">Manufacturing</option>
+                            <option value="energy">Energy</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Research Areas</label>
+                        <div class="checkbox-grid">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="research-areas" value="market-size">
+                                Market Size & Growth
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="research-areas" value="competitors">
+                                Competitor Analysis
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="research-areas" value="trends">
+                                Industry Trends
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="research-areas" value="regulations">
+                                Regulatory Environment
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="research-areas" value="technology">
+                                Technology Landscape
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="research-areas" value="other">
+                                Other
+                            </label>
+                        </div>
+                        <textarea id="research-other-details" class="other-textarea" placeholder="Please specify other research areas..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="geographic-focus">Geographic Focus</label>
+                        <select id="geographic-focus" name="geographic-focus">
+                            <option value="">Select region</option>
+                            <option value="global">Global</option>
+                            <option value="north-america">North America</option>
+                            <option value="europe">Europe</option>
+                            <option value="asia-pacific">Asia Pacific</option>
+                            <option value="latin-america">Latin America</option>
+                            <option value="middle-east">Middle East & Africa</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="time-period">Time Period</label>
+                        <select id="time-period" name="time-period">
+                            <option value="">Select time frame</option>
+                            <option value="current">Current State</option>
+                            <option value="1-year">1 Year Forecast</option>
+                            <option value="3-year">3 Year Forecast</option>
+                            <option value="5-year">5 Year Forecast</option>
+                            <option value="historical">Historical Analysis</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="additional-context">Additional Context</label>
+                        <textarea id="additional-context" name="additional-context" rows="4" placeholder="Any other relevant information or specific requirements..."></textarea>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="back-btn">Back</button>
+                        <button type="submit" class="submit-btn">Submit request</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+    <script src="scripts/menu.js"></script>
+    <script src="scripts/requests.js"></script>
+</body>
+</html> 
