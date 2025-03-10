@@ -25,6 +25,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const launchContainer = document.querySelector('.launch-container');
     const loginContainer = document.querySelector('.login-container');
     const signupContainer = document.querySelector('.signup-container');
+    const packageContainer = document.querySelector('.package-selection');
+    const paymentContainer = document.querySelector('.payment-screen');
     const onboardingContainer = document.querySelector('.onboarding-container');
     const googleAuth = document.querySelector('.google-auth');
     const facebookAuth = document.querySelector('.facebook-auth');
@@ -41,6 +43,8 @@ document.addEventListener('DOMContentLoaded', () => {
         launchContainer.classList.add('hidden');
         loginContainer.classList.add('hidden');
         signupContainer.classList.add('hidden');
+        packageContainer.classList.add('hidden');
+        paymentContainer.classList.add('hidden');
         onboardingContainer?.classList.add('hidden');
         googleAuth.classList.add('hidden');
         facebookAuth.classList.add('hidden');
@@ -54,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // Start onboarding flow
-    const startOnboarding = () => {
+    window.startOnboarding = function() {
         hideAllContainers();
         currentStep = 1;
         showOnboardingStep(currentStep);
@@ -81,6 +85,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Handle signup form submission
     signupForm?.addEventListener('submit', (e) => {
         e.preventDefault();
+        hideAllContainers();
+        packageContainer.classList.remove('hidden');
+    });
+
+    // Handle payment form submission
+    const paymentForm = document.getElementById('payment-form');
+    paymentForm?.addEventListener('submit', (e) => {
+        e.preventDefault();
         startOnboarding();
     });
 
@@ -90,6 +102,43 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         window.location.href = 'dashboard.html';
     });
+
+    // Define showPaymentScreen inside DOMContentLoaded
+    window.showPaymentScreen = function(packageType) {
+        console.log('Showing payment screen for:', packageType); // Debug log
+        hideAllContainers();
+        paymentContainer.classList.remove('hidden');
+        
+        // Update payment details based on package
+        const prices = {
+            standard: '£99',
+            premium: '£249'
+        };
+        
+        // Make sure we're finding the elements
+        const packageElement = document.querySelector('.selected-package');
+        const totalElement = document.querySelector('.total-amount');
+        
+        if (!packageElement || !totalElement) {
+            console.error('Could not find package or total elements');
+            return;
+        }
+        
+        packageElement.innerHTML = `
+            <span>Selected Plan</span>
+            <span>${packageType.charAt(0).toUpperCase() + packageType.slice(1)} Plan</span>
+        `;
+        totalElement.innerHTML = `
+            <span>Total (billed monthly)</span>
+            <span>${prices[packageType]}</span>
+        `;
+    };
+
+    // Add function to go back to package selection
+    window.showPackageSelection = function() {
+        hideAllContainers();
+        packageContainer.classList.remove('hidden');
+    };
 });
 
 // Toggle password visibility

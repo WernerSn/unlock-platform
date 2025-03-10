@@ -6,11 +6,11 @@
     <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
-    <!-- Launch screen - visible by default -->
+    <!-- Launch Screen -->
     <div class="launch-container">
         <div class="logo">
-            <img src="assets/unlock-logo.svg" alt="Unlock Logo" style="width: 600px; height: auto;">
-            <p class="platform-message">Best Experienced on Desktop. Mobile Companion App Coming Soon!</p>
+            <img src="assets/unlock-logo.svg" alt="Unlock Logo">
+            <p>Best Experienced on Desktop. Mobile Companion App Coming Soon!</p>
         </div>
         <div class="auth-buttons">
             <button class="auth-btn" id="signIn">Sign In</button>
@@ -140,7 +140,7 @@
         </div>
     </div>
 
-    <!-- Add this after the login-container -->
+    <!-- Sign up screen - hidden by default -->
     <div class="signup-container hidden">
         <div class="logo">
             <img src="assets/unlock-logo.svg" alt="Unlock Logo">
@@ -210,7 +210,146 @@
         </div>
     </div>
 
-    <!-- Add this after the signup-container -->
+    <!-- Package selection - hidden by default -->
+    <div class="package-selection hidden">
+        <div class="logo">
+            <img src="assets/unlock-logo.svg" alt="Unlock Logo" style="width: 200px; height: auto; margin-bottom: 32px;">
+        </div>
+        <h2>Choose Your Plan</h2>
+        <div class="package-grid">
+            <div class="package-card">
+                <div class="package-header">
+                    <h3>Free</h3>
+                    <div class="price">£0<span>/mo</span></div>
+                    <p>Perfect for getting started</p>
+                </div>
+                <div class="package-features">
+                    <ul>
+                        <li>✓ One free report per quarter</li>
+                        <li>✓ Basic market reseach access/li>
+                        <li>✓ Standard alerts</li>
+                        <li class="disabled">× Advanced analytics</li>
+                        <li class="disabled">× Priority support</li>
+                    </ul>
+                </div>
+                <button class="primary-btn" onclick="startOnboarding()">Get Started Free</button>
+            </div>
+
+            <div class="package-card popular">
+                <div class="popular-tag">Most Popular</div>
+                <div class="package-header">
+                    <h3>Standard</h3>
+                    <div class="price">£99<span>/mo</span></div>
+                </div>
+                <div class="package-features">
+                    <ul>
+                        <li>✓ Unlimted access to snapshot reports</li>
+                        <li>✓ More Advanced market analysis</li>
+                        <li>✓ 1 company request per month</li>
+                        <li>✓ Real-time alerts</li>
+                        <li>✓ Priority email support</li>
+                    </ul>
+                </div>
+                <button class="primary-btn highlight" onclick="showPaymentScreen('standard')">Select Standard Plan</button>
+            </div>
+
+            <div class="package-card">
+                <div class="package-header">
+                    <h3>Premium</h3>
+                    <div class="price">£249<span>/mo</span></div>
+                </div>
+                <div class="package-features">
+                    <ul>
+                        <li>✓ Everything in Standard</li>
+                        <li>✓ Unlimited report requests</li>
+                        <li>✓ 30-day report exclusivity</li>
+                        <li>✓ AI-powered insights</li>
+                        <li>✓ Reseach Assistant</li>
+                        <li>✓ Custom reporting</li>
+                        <li>✓ 24/7 dedicated support</li>
+                    </ul>
+                </div>
+                <button class="primary-btn" onclick="showPaymentScreen('premium')">Select Premium Plan</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment Screen - hidden by default -->
+    <div class="payment-screen hidden">
+        <div class="logo">
+            <img src="assets/unlock-logo.svg" alt="Unlock Logo" style="width: 160px; height: auto; margin-bottom: 24px;">
+        </div>
+        <button class="back-btn" onclick="showPackageSelection()">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" fill="currentColor"/>
+            </svg>
+            Back
+        </button>
+        <div class="payment-header">
+            <h2>Complete Your Subscription</h2>
+            <p>Choose your payment method</p>
+        </div>
+        
+        <div class="payment-form">
+            <div class="order-summary">
+                <h3>Order Summary</h3>
+                <div class="selected-package"></div>
+                <div class="total-amount"></div>
+            </div>
+            
+            <div class="payment-methods">
+                <div class="quick-payment-options">
+                    <button class="payment-option-btn">
+                        <img src="assets/payment/paypal.svg" alt="PayPal" />
+                        Pay with PayPal
+                    </button>
+                    <button class="payment-option-btn">
+                        <img src="assets/payment/apple-pay.svg" alt="Apple Pay" />
+                        Apple Pay
+                    </button>
+                    <button class="payment-option-btn">
+                        <img src="assets/payment/google-pay.svg" alt="Google Pay" />
+                        Google Pay
+                    </button>
+                </div>
+                
+                <div class="payment-divider">
+                    <span>Or pay with card</span>
+                </div>
+                
+                <form id="payment-form">
+                    <div class="form-group">
+                        <label for="card-name">Name on card</label>
+                        <input type="text" id="card-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="card-number">Card number</label>
+                        <input type="text" id="card-number" placeholder="1234 5678 9012 3456" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="expiry">Expiry date</label>
+                            <input type="text" id="expiry" placeholder="MM/YY" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cvc">CVC</label>
+                            <input type="text" id="cvc" placeholder="123" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="submit-payment-btn">Complete Purchase</button>
+                </form>
+                
+                <div class="secure-payment">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/>
+                    </svg>
+                    <span>Secure payment powered by Stripe</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Onboarding container - hidden by default -->
     <div class="onboarding-container hidden">
         <div class="onboarding-progress">
             <div class="step-indicator">
@@ -242,36 +381,28 @@
                 <div class="option-grid">
                     <button class="option-card">
                         <div class="option-icon">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z" fill="currentColor"/>
-                            </svg>
+                            <img src="assets/icons/beginner.png" alt="Beginner">
                         </div>
                         <h3>Beginner</h3>
                         <p>New to investing or have basic knowledge</p>
                     </button>
                     <button class="option-card">
                         <div class="option-icon">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M3.5 18.5l6-6 4 4L22 6.92l-1.41-1.41-7.09 7.08-4-4L2 16.1V3h16.1l-1.4-1.4H2c-.55 0-1 .45-1 1v16.1l-1.4 1.4H22v-2.1H5.9l-2.4 2.4v-2z" fill="currentColor"/>
-                            </svg>
+                            <img src="assets/icons/intermediate.png" alt="Intermediate">
                         </div>
                         <h3>Intermediate</h3>
                         <p>Have some experience with investments</p>
                     </button>
                     <button class="option-card">
                         <div class="option-icon">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z" fill="currentColor"/>
-                            </svg>
+                            <img src="assets/icons/advanced.png" alt="Advanced">
                         </div>
                         <h3>Advanced</h3>
                         <p>Experienced investor with diverse portfolio</p>
                     </button>
                     <button class="option-card">
                         <div class="option-icon">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z" fill="currentColor"/>
-                            </svg>
+                            <img src="assets/icons/professional.png" alt="Professional">
                         </div>
                         <h3>Professional</h3>
                         <p>Professional investment background</p>
@@ -290,36 +421,28 @@
                 <div class="option-grid">
                     <button class="option-card">
                         <div class="option-icon">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" fill="currentColor"/>
-                            </svg>
+                            <img src="assets/icons/property.png" alt="Property">
                         </div>
                         <h3>Property</h3>
                         <p>Invest in real estate opportunities</p>
                     </button>
                     <button class="option-card">
                         <div class="option-icon">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z" fill="currentColor"/>
-                            </svg>
+                            <img src="assets/icons/wealth-building.png" alt="Wealth Building">
                         </div>
                         <h3>Wealth Building</h3>
                         <p>Long-term wealth accumulation</p>
                     </button>
                     <button class="option-card">
                         <div class="option-icon">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" fill="currentColor"/>
-                            </svg>
+                            <img src="assets/icons/impact-investing.png" alt="Impact Investing">
                         </div>
                         <h3>Impact Investing</h3>
                         <p>Support sustainable projects</p>
                     </button>
                     <button class="option-card">
                         <div class="option-icon">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-6 0h-4V4h4v2z" fill="currentColor"/>
-                            </svg>
+                            <img src="assets/icons/diversification.png" alt="Diversification">
                         </div>
                         <h3>Diversification</h3>
                         <p>Spread investments across sectors</p>
@@ -338,36 +461,28 @@
                 <div class="option-grid">
                     <button class="option-card">
                         <div class="option-icon">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z" fill="currentColor"/>
-                            </svg>
+                            <img src="assets/icons/short-term.png" alt="Short Term">
                         </div>
                         <h3>Short Term</h3>
                         <p>Looking to invest for 1-3 years</p>
                     </button>
                     <button class="option-card">
                         <div class="option-icon">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V9h14v10zm0-12H5V5h14v2zm-7 4H7v5h5v-5z" fill="currentColor"/>
-                            </svg>
+                            <img src="assets/icons/medium-term.png" alt="Medium Term">
                         </div>
                         <h3>Medium Term</h3>
                         <p>Planning for 3-5 year investments</p>
                     </button>
                     <button class="option-card">
                         <div class="option-icon">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M18 6h-2V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H6c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6 10c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm-4-8h8V4h-8v4z" fill="currentColor"/>
-                            </svg>
+                            <img src="assets/icons/long-term.png" alt="Long Term">
                         </div>
                         <h3>Long Term</h3>
                         <p>Investing for 5+ years</p>
                     </button>
                     <button class="option-card">
                         <div class="option-icon">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-4h2v2h-2v-2zm1.61-9.96c-2.06-.3-3.88.97-4.43 2.79-.18.58.26 1.17.87 1.17h.2c.41 0 .74-.29.88-.67.32-.89 1.27-1.5 2.3-1.28.95.2 1.65 1.13 1.57 2.1-.1 1.34-1.62 1.63-2.45 2.88 0 .01-.01.01-.01.02-.01.02-.02.03-.03.05-.09.15-.18.32-.25.5-.01.03-.03.05-.04.08-.01.02-.01.04-.02.07-.12.34-.2.75-.2 1.25h2c0-.42.11-.77.28-1.07.02-.03.03-.06.05-.09.08-.14.18-.27.28-.39.01-.01.02-.03.03-.04.1-.12.21-.23.33-.34.96-.91 2.26-1.65 1.99-3.56-.24-1.74-1.61-3.21-3.35-3.47z" fill="currentColor"/>
-                            </svg>
+                            <img src="assets/icons/flexible.png" alt="Flexible">
                         </div>
                         <h3>Flexible</h3>
                         <p>Open to various time horizons</p>
@@ -386,36 +501,28 @@
                 <div class="option-grid">
                     <button class="option-card">
                         <div class="option-icon">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z" fill="currentColor"/>
-                            </svg>
+                            <img src="assets/icons/conservative.png" alt="Conservative">
                         </div>
                         <h3>Conservative</h3>
                         <p>Focus on protecting capital with lower risk</p>
                     </button>
                     <button class="option-card">
                         <div class="option-icon">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 12.5h-1.5V14h-1v1.5H8v-4h1.5V13h1v-1.5H12v4zm3-2.5h-1v3h-1.5v-7h2.5c1.1 0 2 .9 2 2v1c0 .55-.45 1-1 1zm-1-3v2h1v-2h-1z" fill="currentColor"/>
-                            </svg>
+                            <img src="assets/icons/moderate.png" alt="Moderate">
                         </div>
                         <h3>Moderate</h3>
                         <p>Balance between growth and security</p>
                     </button>
                     <button class="option-card">
                         <div class="option-icon">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M13.5 13.48l-4-4L2 17h20L13.5 13.48zM8 4v12l4-4 4 4V4H8z" fill="currentColor"/>
-                            </svg>
+                            <img src="assets/icons/growth.png" alt="Growth">
                         </div>
                         <h3>Growth</h3>
                         <p>Seeking higher returns with more risk</p>
                     </button>
                     <button class="option-card">
                         <div class="option-icon">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z" fill="currentColor"/>
-                            </svg>
+                            <img src="assets/icons/aggressive.png" alt="Aggressive">
                         </div>
                         <h3>Aggressive</h3>
                         <p>Maximum growth potential with high risk</p>
@@ -434,36 +541,28 @@
                 <div class="option-grid">
                     <button class="option-card">
                         <div class="option-icon">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z" fill="currentColor"/>
-                            </svg>
+                            <img src="assets/icons/1k-10k.png" alt="£1k - £10k">
                         </div>
                         <h3>£1k - £10k</h3>
                         <p>Start with smaller investments</p>
                     </button>
                     <button class="option-card">
                         <div class="option-icon">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1.41 16.09V20h-2.67v-1.93c-1.71-.36-3.16-1.46-3.27-3.4h1.96c.1 1.05.82 1.87 2.65 1.87 1.96 0 2.4-.98 2.4-1.59 0-.83-.44-1.61-2.67-2.14-2.48-.6-4.18-1.62-4.18-3.67 0-1.72 1.39-2.84 3.11-3.21V4h2.67v1.95c1.86.45 2.79 1.86 2.85 3.39H14.3c-.05-1.11-.64-1.87-2.22-1.87-1.5 0-2.4.68-2.4 1.64 0 .84.65 1.39 2.67 1.91s4.18 1.39 4.18 3.91c-.01 1.83-1.38 2.83-3.12 3.16z" fill="currentColor"/>
-                            </svg>
+                            <img src="assets/icons/10k-50k.png" alt="£10k - £50k">
                         </div>
                         <h3>£10k - £50k</h3>
                         <p>Medium-sized investments</p>
                     </button>
                     <button class="option-card">
                         <div class="option-icon">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M20 4H4c-1.11 0-1.99.9-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z" fill="currentColor"/>
-                            </svg>
+                            <img src="assets/icons/50k-250k.png" alt="£50k - £250k">
                         </div>
                         <h3>£50k - £250k</h3>
                         <p>Larger investment portfolio</p>
                     </button>
                     <button class="option-card">
                         <div class="option-icon">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M4 8h4V4H4v4zm6 12h4v-4h-4v4zm-6 0h4v-4H4v4zm0-6h4v-4H4v4zm6 0h4v-4h-4v4zm6-10v4h4V4h-4zm-6 4h4V4h-4v4zm6 6h4v-4h-4v4zm0 6h4v-4h-4v4z" fill="currentColor"/>
-                            </svg>
+                            <img src="assets/icons/250k+.png" alt="£250k+">
                         </div>
                         <h3>£250k+</h3>
                         <p>Institutional-level investments</p>
@@ -482,36 +581,28 @@
                 <div class="option-grid">
                     <button class="option-card">
                         <div class="option-icon">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M20 3H4c-1.1 0-1.99.9-1.99 2L2 15c0 1.11.9 2 2 2h16c1.11 0 2-.9 2-2V5c0-1.11-.9-2-2-2zm-9 3h2v2h-2V6zm0 3h2v2h-2V9zM8 6h2v2H8V6zm0 3h2v2H8V9zm-1 2H5V9h2v2zm0-3H5V6h2v2zm9 7H8v-2h8v2zm0-4h-2V9h2v2zm0-3h-2V6h2v2zm3 3h-2V9h2v2zm0-3h-2V6h2v2zm-7 15l4-4H8l4 4z" fill="currentColor"/>
-                            </svg>
+                            <img src="assets/icons/technology.png" alt="Technology">
                         </div>
                         <h3>Technology</h3>
                         <p>Software, hardware, and innovation</p>
                     </button>
                     <button class="option-card">
                         <div class="option-icon">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z" fill="currentColor"/>
-                            </svg>
+                            <img src="assets/icons/finance.png" alt="Finance">
                         </div>
                         <h3>Finance</h3>
                         <p>Banking, insurance, and fintech</p>
                     </button>
                     <button class="option-card">
                         <div class="option-icon">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z" fill="currentColor"/>
-                            </svg>
+                            <img src="assets/icons/healthcare.png" alt="Healthcare">
                         </div>
                         <h3>Healthcare</h3>
                         <p>Medical, biotech, and health services</p>
                     </button>
                     <button class="option-card">
                         <div class="option-icon">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" fill="currentColor"/>
-                            </svg>
+                            <img src="assets/icons/sustainability.png" alt="Sustainability">
                         </div>
                         <h3>Sustainability</h3>
                         <p>Clean energy and environmental tech</p>
@@ -530,36 +621,28 @@
                 <div class="option-grid">
                     <button class="option-card">
                         <div class="option-icon">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" fill="currentColor"/>
-                            </svg>
+                            <img src="assets/icons/email.png" alt="Email">
                         </div>
                         <h3>Email</h3>
                         <p>Regular email updates and newsletters</p>
                     </button>
                     <button class="option-card">
                         <div class="option-icon">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.11-.89-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z" fill="currentColor"/>
-                            </svg>
+                            <img src="assets/icons/in-app.png" alt="In-App">
                         </div>
                         <h3>In-App</h3>
                         <p>Push notifications in the platform</p>
                     </button>
                     <button class="option-card">
                         <div class="option-icon">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z" fill="currentColor"/>
-                            </svg>
+                            <img src="assets/icons/phone.png" alt="Phone">
                         </div>
                         <h3>Phone</h3>
                         <p>SMS alerts for important updates</p>
                     </button>
                     <button class="option-card">
                         <div class="option-icon">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-4h2v2h-2v-2zm1.61-9.96c-2.06-.3-3.88.97-4.43 2.79-.18.58.26 1.17.87 1.17h.2c.41 0 .74-.29.88-.67.32-.89 1.27-1.5 2.3-1.28.95.2 1.65 1.13 1.57 2.1-.1 1.34-1.62 1.63-2.45 2.88 0 .01-.01.01-.01.02-.01.02-.02.03-.03.05-.09.15-.18.32-.25.5-.01.03-.03.05-.04.08-.01.02-.01.04-.02.07-.12.34-.2.75-.2 1.25h2c0-.42.11-.77.28-1.07.02-.03.03-.06.05-.09.08-.14.18-.27.28-.39.01-.01.02-.03.03-.04.1-.12.21-.23.33-.34.96-.91 2.26-1.65 1.99-3.56-.24-1.74-1.61-3.21-3.35-3.47z" fill="currentColor"/>
-                            </svg>
+                            <img src="assets/icons/custom.png" alt="Custom">
                         </div>
                         <h3>Custom</h3>
                         <p>Choose your preferred combination</p>
@@ -578,36 +661,28 @@
                 <div class="option-grid">
                     <button class="option-card">
                         <div class="option-icon">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="currentColor"/>
-                            </svg>
+                            <img src="assets/icons/social-media.png" alt="Social Media">
                         </div>
                         <h3>Social Media</h3>
                         <p>Facebook, Twitter, LinkedIn, etc.</p>
                     </button>
                     <button class="option-card">
                         <div class="option-icon">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" fill="currentColor"/>
-                            </svg>
+                            <img src="assets/icons/friend-colleague.png" alt="Friend/Colleague">
                         </div>
                         <h3>Friend/Colleague</h3>
                         <p>Personal recommendation</p>
                     </button>
                     <button class="option-card">
                         <div class="option-icon">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M7.5 5.6L10 7 8.6 4.5 10 2 7.5 3.4 5 2l1.4 2.5L5 7zm12 9.8L17 14l1.4 2.5L17 19l2.5-1.4L22 19l-1.4-2.5L22 14zM22 2l-2.5 1.4L17 2l1.4 2.5L17 7l2.5-1.4L22 7l-1.4-2.5zm-7.63 5.29c-.39-.39-1.02-.39-1.02 0 0 .39.39.39 1.02 0 1.41z" fill="currentColor"/>
-                            </svg>
+                            <img src="assets/icons/advertisement.png" alt="Advertisement">
                         </div>
                         <h3>Advertisement</h3>
                         <p>Online or offline marketing</p>
                     </button>
                     <button class="option-card">
                         <div class="option-icon">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 10.09 3 6.5S5.91 1 9.5 1c1.61 0 3.09.59 4.23 1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="currentColor"/>
-                            </svg>
+                            <img src="assets/icons/search.png" alt="Search">
                         </div>
                         <h3>Search</h3>
                         <p>Google or other search engines</p>
@@ -625,9 +700,7 @@
     <div class="onboarding-completion hidden" data-step="complete">
         <div class="onboarding-content">
             <div class="completion-icon">
-                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="currentColor"/>
-                </svg>
+                <img src="assets/icons/complete.png" alt="Complete">
             </div>
             <h2>Perfect! You're all set</h2>
             <p class="completion-message">
