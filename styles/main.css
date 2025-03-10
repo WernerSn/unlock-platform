@@ -1046,9 +1046,10 @@ input::placeholder {
 .package-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    margin: 32px auto;
+    gap: 20px;
+    padding: 0 24px;
     max-width: 1200px;
+    margin: 32px auto;
 }
 
 .package-card {
@@ -1181,23 +1182,31 @@ input::placeholder {
 
 @media screen and (max-width: 1200px) {
     .package-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(1, 1fr);
         gap: 20px;
         padding: 0 24px;
+        max-width: 500px;
+        margin: 32px auto;
     }
-}
 
-@media screen and (max-width: 992px) {
-    .package-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-        padding: 0;
+    .package-card {
+        margin-bottom: 20px;
+        height: auto;
+    }
+
+    .package-card:last-child {
+        margin-bottom: 0;
+    }
+
+    .package-features {
+        margin: 24px 0 32px;
     }
 }
 
 @media screen and (max-width: 768px) {
     .package-selection {
         padding: 24px 16px;
+        overflow-y: auto;
     }
     
     .package-grid {
@@ -1205,10 +1214,6 @@ input::placeholder {
         max-width: 400px;
         margin: 24px auto;
         padding: 0;
-    }
-
-    .package-card {
-        padding: 24px;
     }
 }
 
@@ -1219,10 +1224,6 @@ input::placeholder {
 
     .package-grid {
         gap: 16px;
-    }
-
-    .package-card {
-        min-width: unset;
     }
 }
 
@@ -1262,10 +1263,12 @@ input::placeholder {
 
 .payment-form {
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr;
     gap: 48px;
     align-items: start;
     width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
 }
 
 .order-summary {
@@ -1273,6 +1276,7 @@ input::placeholder {
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
     padding: 24px;
+    margin-bottom: 24px;
 }
 
 .order-summary h3 {
@@ -1364,12 +1368,64 @@ input::placeholder {
 
 @media screen and (max-width: 768px) {
     .payment-screen {
-        padding: 32px;
-        width: 90%;
+        padding: 24px;
+        width: 95%;
+        margin: 60px auto 32px;
     }
     
     .payment-form {
-        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .order-summary {
+        padding: 20px;
+    }
+
+    #payment-form {
+        padding: 20px;
+    }
+
+    .quick-payment-options {
+        gap: 10px;
+        margin-bottom: 16px;
+    }
+
+    .payment-option-btn {
+        padding: 10px 16px;
+        min-height: 44px;
+    }
+
+    .payment-option-btn img {
+        height: 32px;
+    }
+
+    .payment-header {
+        margin-bottom: 24px;
+    }
+
+    .payment-header h2 {
+        font-size: 22px;
+    }
+
+    .payment-header p {
+        font-size: 15px;
+    }
+}
+
+/* Additional adjustments for smaller tablets */
+@media screen and (max-width: 480px) {
+    .payment-screen {
+        padding: 20px;
+        margin: 40px auto 24px;
+    }
+
+    .payment-form {
+        gap: 24px;
+    }
+
+    .order-summary,
+    #payment-form {
+        padding: 16px;
     }
 }
 
